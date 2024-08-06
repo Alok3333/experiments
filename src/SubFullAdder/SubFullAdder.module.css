@@ -56,6 +56,15 @@
     height: 50px;
 }
 
+.offbtn7,
+.onbtn7 {
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
 .offbtn3,
 .onbtn4 {
     position: absolute;
@@ -76,41 +85,51 @@
 }
 
 .offbtn1 {
-    top: 34px;
-    left: 54px;
+    top: -2px;
+    left: 28px;
 }
 
 .onbtn1 {
-    top: 34px;
-    left: 54px;
+    top: -2px;
+    left: 28px;
 }
 
 .offbtn2 {
-    top: 134px;
-    left: 51px;
+    top: 37px;
+    left: 28px;
 }
 
 .onbtn2 {
-    top: 134px;
-    left: 51px;
+    top: 37px;
+    left: 28px;
+}
+
+.offbtn7 {
+    top: 76px;
+    left: 28px;
+}
+
+.onbtn7 {
+    top: 76px;
+    left: 28px;
 }
 
 .offbtn3 {
-    top: 88px;
-    right: 25px;
+    top: 54px;
+    right: 65px;
 }
 
 .onbtn4 {
-    top: 88px;
-    right: 25px;
+    top: 54px;
+    right: 65px;
 }
 
 .offbtn5 {
-    top: 244px;
-    right: 25px;
+    bottom: 63px;
+    right: 64px;
 }
 
 .onbtn6 {
-    top: 244px;
-    right: 25px;
+    bottom: 63px;
+    right: 64px;
 }
