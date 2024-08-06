@@ -12,11 +12,11 @@ select {
   margin-bottom: 10px;
 }
 
-.csstop {
+/* .csstop {
   position: relative;
   margin: auto;
   display: flex;
-  width: 50%;
+  width: 31%;
   -webkit-box-pack: center;
   justify-content: center;
   padding: 24px;
@@ -24,4 +24,5 @@ select {
   border: 1px solid rgb(232, 234, 238);
   border-radius: 12px;
   margin-top: 20px;
-}
+  overflow: hidden;
+} */

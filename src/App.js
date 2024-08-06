@@ -1,14 +1,12 @@
 import "./App.css";
-import ExperimentOne from "./ExperimentLabs/ExperimentOne";
-import SubButton from "./ExperimentLabs/SubButton";
+import Resistor from "./ExperimentLabs/Resistor";
+import SubHalfAdder1 from "./SubHalfAdder/SubHalfAdder1";
 
 function App() {
   return (
     <div className="App">
-      <ExperimentOne />
-      <SubButton />
-      {/* <SubButton />
-      <SubButton /> */}
+      {/* <Resistor/> */}
+      <SubHalfAdder1/>
     </div>
   );
 }
