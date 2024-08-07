@@ -24,19 +24,27 @@ const circleOff =
 const circleOn =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4112-switchOn.png";
 
-function createData(inputA, inputB, inputC, carry, sum) {
-  return { inputA, inputB, inputC, carry, sum };
+function createData(
+  inputA2,
+  inputB2,
+  inputA1,
+  inputB1,
+  inputC,
+  carry,
+  sum2,
+  sum1
+) {
+  return { inputA2, inputB2, inputA1, inputB1, inputC, carry, sum2, sum1 };
 }
 
 const rows = [
-  createData(0, 0, 0, 0, 0),
-  createData(0, 0, 1, 0, 1),
-  createData(0, 1, 0, 0, 1),
-  createData(0, 1, 1, 1, 0),
-  createData(1, 0, 0, 0, 1),
-  createData(1, 0, 1, 1, 0),
-  createData(1, 1, 0, 1, 0),
-  createData(1, 1, 1, 1, 1),
+  createData(1, 0, 0, 0, 0, 0, 1, 0),
+  createData(0, 1, 0, 0, 0, 0, 1, 0),
+  createData(1, 1, 0, 0, 0, 1, 0, 0),
+  createData(0, 0, 1, 0, 0, 0, 0, 1),
+  createData(0, 0, 0, 1, 0, 0, 0, 1),
+  createData(0, 0, 0, 0, 1, 0, 0, 1),
+  createData(0, 0, 1, 1, 0, 0, 1, 0),
 ];
 
 function TwoBitAdder() {
@@ -123,13 +131,17 @@ function TwoBitAdder() {
                 />
               )}
 
-              {lightOn2 && (
-                <img src={circleOn1} alt="offbtn" className={styles.onbtn11}/>
+              {lightOn2 && !lightOn3 && (
+                <img src={circleOn1} alt="offbtn" className={styles.onbtn11} />
               )}
 
-              {isInputC && (<img src={circleOn1} alt="offbtn" className={styles.onbtn11}/>)}
+              {isInputC && (
+                <img src={circleOn1} alt="offbtn" className={styles.onbtn11} />
+              )}
 
-              {lightOn3 && !lightOn2 && (<img src={circleOn1} alt="offbtn" className={styles.onbtn4}/>)}
+              {lightOn3 && (
+                <img src={circleOn1} alt="offbtn" className={styles.onbtn4} />
+              )}
             </div>
           </div>
         </Grid>
@@ -142,11 +154,14 @@ function TwoBitAdder() {
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Input-A</TableCell>
-                    <TableCell align="right">Input-B</TableCell>
+                    <TableCell>Input-A2</TableCell>
+                    <TableCell align="right">Input-B2</TableCell>
+                    <TableCell align="right">Input-A1</TableCell>
+                    <TableCell align="right">Input-B1</TableCell>
                     <TableCell align="right">Input-C</TableCell>
                     <TableCell align="right">Carry</TableCell>
-                    <TableCell align="right">Sum</TableCell>
+                    <TableCell align="right">Sum2</TableCell>
+                    <TableCell align="right">Sum1</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -156,12 +171,15 @@ function TwoBitAdder() {
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
-                        {row.inputA}
+                        {row.inputA2}
                       </TableCell>
-                      <TableCell align="right">{row.inputB}</TableCell>
+                      <TableCell align="right">{row.inputB2}</TableCell>
+                      <TableCell align="right">{row.inputA1}</TableCell>
+                      <TableCell align="right">{row.inputB1}</TableCell>
                       <TableCell align="right">{row.inputC}</TableCell>
                       <TableCell align="right">{row.carry}</TableCell>
-                      <TableCell align="right">{row.sum}</TableCell>
+                      <TableCell align="right">{row.sum2}</TableCell>
+                      <TableCell align="right">{row.sum1}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
