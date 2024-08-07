@@ -11,6 +11,15 @@
     overflow: hidden;
 }
 
+thead th:hover {
+    background: palevioletred;
+    color: #fff;
+    font-size: 16px;
+    font-family: system-ui;
+    transition: .4s all;
+    border-radius: 6px;
+}
+
 .css-card {
     position: relative;
     margin: auto;

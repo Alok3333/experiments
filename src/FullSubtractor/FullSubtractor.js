@@ -43,8 +43,6 @@ function FullSubtractor() {
   const [isRedOne, setIsRedOne] = useState(false);
   const [isRedTwo, setIsRedTwo] = useState(false);
   const [isInputC, setIsInputC] = useState(false);
-  //   const [isRedThree, setIsRedThree] = useState(false);
-  //   const [isRedFour, setIsRedFour] = useState(false);
 
   const lightOn = isRedOne;
   const lightOn1 = isRedTwo;
