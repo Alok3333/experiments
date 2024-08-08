@@ -1,5 +1,6 @@
 import "./App.css";
 import Resistor from "./ExperimentLabs/Resistor";
+import FourBitAdderSubtractor from "./FourBitAdderSubtractor/FourBitAdderSubtractor";
 import FullSubtractor from "./FullSubtractor/FullSubtractor";
 import HalfSubtractor from "./HalfSubtractor/HalfSubtractor";
 import SubFullAdder from "./SubFullAdder/SubFullAdder";
@@ -14,7 +15,8 @@ function App() {
       {/* <SubFullAdder/> */}
       {/* <TwoBitAdder/> */}
       {/* <HalfSubtractor/> */}
-      <FullSubtractor />
+      {/* <FullSubtractor /> */}
+      <FourBitAdderSubtractor />
     </div>
   );
 }
