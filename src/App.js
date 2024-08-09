@@ -1,4 +1,6 @@
+import { SnackbarProvider } from "notistack";
 import "./App.css";
+import CharacterizationOfDigitalLogic from "./CharacterizationOfDigitalLogic/CharacterizationOfDigitalLogic";
 import Resistor from "./ExperimentLabs/Resistor";
 import FourBitAdderSubtractor from "./FourBitAdderSubtractor/FourBitAdderSubtractor";
 import FullSubtractor from "./FullSubtractor/FullSubtractor";
@@ -16,7 +18,12 @@ function App() {
       {/* <TwoBitAdder/> */}
       {/* <HalfSubtractor/> */}
       {/* <FullSubtractor /> */}
-      <FourBitAdderSubtractor />
+      {/* <FourBitAdderSubtractor /> */}
+
+      {/* Wrap component */}
+      <SnackbarProvider>
+        <CharacterizationOfDigitalLogic />
+      </SnackbarProvider>
     </div>
   );
 }
