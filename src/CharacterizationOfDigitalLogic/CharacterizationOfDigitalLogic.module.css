@@ -39,51 +39,15 @@
 }
 
 .offbtn1,
-.onbtn1 {
-    position: absolute;
-    z-index: 2;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-}
-
+.onbtn1,
 .offbtn2,
-.onbtn2 {
-    position: absolute;
-    z-index: 2;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-}
-
+.onbtn2,
 .offbtn3,
-.onbtn3 {
-    position: absolute;
-    z-index: 2;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-}
-
-
+.onbtn3,
 .offbtn4,
-.onbtn4 {
-    position: absolute;
-    z-index: 2;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-}
-
+.onbtn4,
 .offbtn5,
-.onbtn5 {
-    position: absolute;
-    z-index: 2;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-}
-
+.onbtn5,
 .offbtn6,
 .onbtn6 {
     position: absolute;
