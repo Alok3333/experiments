@@ -8,9 +8,11 @@
     border: 1px solid rgb(232, 234, 238);
     border-radius: 12px;
     margin-top: 20px;
+    margin-bottom: 20px;
     overflow: hidden;
 }
 
+/* card wrapper second for graph image */
 .cardWrapperSecond {
     position: relative;
     margin: auto;
@@ -21,8 +23,23 @@
     border: 1px solid rgb(232, 234, 238);
     border-radius: 12px;
     margin-top: 20px;
+    margin-bottom: 20px;
     overflow: hidden;
 }
+
+/* .cardWrapperThird {
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    background-color: rgba(246, 247, 248, 0.5);
+    border: 1px solid rgb(232, 234, 238);
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+} */
 
 .css-card {
     position: relative;
@@ -51,7 +68,10 @@
     z-index: 1;
 }
 
-.backgroundFigureImage {
+/* css for graph image & low/high */
+.backgroundFigureImage,
+.lowGraphImage,
+.highGraphImage {
     width: 614px;
     height: 100%;
     object-fit: cover;
