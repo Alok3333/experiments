@@ -8,6 +8,7 @@ import HalfSubtractor from "./HalfSubtractor/HalfSubtractor";
 import SubFullAdder from "./SubFullAdder/SubFullAdder";
 import SubHalfAdder1 from "./SubHalfAdder/SubHalfAdder1";
 import TwoBitAdder from "./TwoBItAdder/TwoBitAdder";
+import DigitalLogicFamiliesPart2 from "./CharacterizationOfDigitalLogic/DigitalLogicFamiliesPart2";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       {/* Wrap component */}
       <SnackbarProvider>
         <CharacterizationOfDigitalLogic />
+        <DigitalLogicFamiliesPart2 />
       </SnackbarProvider>
     </div>
   );
