@@ -1,9 +1,22 @@
-.csstop {
+.cardWrapperFirst {
     position: relative;
     margin: auto;
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
+    background-color: rgba(246, 247, 248, 0.5);
+    border: 1px solid rgb(232, 234, 238);
+    border-radius: 12px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.cardWrapperSecond {
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
     background-color: rgba(246, 247, 248, 0.5);
     border: 1px solid rgb(232, 234, 238);
     border-radius: 12px;
@@ -32,6 +45,13 @@
 }
 
 .backgroundImage {
+    width: 614px;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.backgroundFigureImage {
     width: 614px;
     height: 100%;
     object-fit: cover;

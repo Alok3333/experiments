@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./CharacterizationOfDigitalLogic.module.css";
-import { Box, Grid, Slider, Typography } from "@mui/material";
+import { Box, Button, Grid, Slider, Typography } from "@mui/material";
 import { useSnackbar } from "notistack";
 
 const boxBtnOff =
@@ -67,7 +67,13 @@ function CharacterizationOfDigitalLogic() {
   const [isRotateArrowNine, setIsRotateArrowNine] = useState(9);
   const [isRotateArrowEleven, setIsRotateArrowEleven] = useState(11);
 
+  // This state for updating arrow
   const [isRotating, setIsRotating] = useState(true);
+  const [isRotatingTwo, setIsRotatingTwo] = useState(true);
+  const [isRotatingThree, setIsRotatingThree] = useState(true);
+  const [isRotatingFour, setIsRotatingFour] = useState(true);
+  const [isRotatingFive, setIsRotatingFive] = useState(true);
+  const [isRotatingSix, setIsRotatingSix] = useState(true);
 
   // Using notiStack for showing error message
   const { enqueueSnackbar } = useSnackbar();
@@ -76,8 +82,18 @@ function CharacterizationOfDigitalLogic() {
   const [val, setVal] = useState(MIN);
   const [displayValue, setDisplayValue] = useState(boxValue[MIN]);
 
+  // State for figure image
+  const [showFigure, setShowFigure] = useState(false);
+  const [showFigureImage, setShowFigureImage] = useState(false);
+
   useEffect(() => {
     setDisplayValue(boxValue[val]);
+
+    if (val === MAX) {
+      setShowFigure(true);
+    } else {
+      setShowFigure(false);
+    }
   }, [val]);
 
   const handleChange = (_, newValue) => {
@@ -99,55 +115,55 @@ function CharacterizationOfDigitalLogic() {
   const handleRotate1 = () => {
     setIsRedThree(!isRedThree);
     setIsRotateArrowFive((prev) => {
-      let newDeg = isRotating ? prev + 1 : prev - 1;
+      let newDeg = isRotatingThree ? prev + 1 : prev - 1;
       return newDeg;
     });
 
-    setIsRotating(!isRotating);
+    setIsRotatingThree(!isRotatingThree);
   };
 
   // HandleClick for 2rd button
   const handleRotate2 = () => {
     setIsRedTwo(!isRedTwo);
     setIsRotateArrowThree((prev) => {
-      let newDeg = isRotating ? prev + 1 : prev - 1;
+      let newDeg = isRotatingTwo ? prev + 1 : prev - 1;
       return newDeg;
     });
 
-    setIsRotating(!isRotating);
+    setIsRotatingTwo(!isRotatingTwo);
   };
 
   // HandleClick for 4th button
   const handleRotate3 = () => {
     setIsRedFour(!isRedFour);
     setIsRotateArrowSeven((prev) => {
-      let newDeg = isRotating ? prev + 1 : prev - 1;
+      let newDeg = isRotatingFour ? prev + 1 : prev - 1;
       return newDeg;
     });
 
-    setIsRotating(!isRotating);
+    setIsRotatingFour(!isRotatingFour);
   };
 
   // HandleClick for 5th button
   const handleRotate4 = () => {
     setIsRedFive(!isRedFive);
     setIsRotateArrowNine((prev) => {
-      let newDeg = isRotating ? prev + 1 : prev - 1;
+      let newDeg = isRotatingFive ? prev + 1 : prev - 1;
       return newDeg;
     });
 
-    setIsRotating(!isRotating);
+    setIsRotatingFive(!isRotatingFive);
   };
 
   // HandleClick for 6th button
   const handleRotate5 = () => {
     setIsRedSix(!isRedSix);
     setIsRotateArrowEleven((prev) => {
-      let newDeg = isRotating ? prev + 1 : prev - 1;
+      let newDeg = isRotatingSix ? prev + 1 : prev - 1;
       return newDeg;
     });
 
-    setIsRotating(!isRotating);
+    setIsRotatingSix(!isRotatingSix);
   };
 
   // Written enquesnackbar message here
@@ -167,7 +183,7 @@ function CharacterizationOfDigitalLogic() {
     <>
       <Grid container spacing={2} direction="column" alignItems="center">
         <Grid item xs={12}>
-          <div className={styles.csstop}>
+          <div className={styles.cardWrapperFirst}>
             <div className={styles.wrapper}>
               <Box
                 sx={{
@@ -356,6 +372,21 @@ function CharacterizationOfDigitalLogic() {
               ></div>
             </div>
           </div>
+
+          {/* Figure image */}
+          {showFigure && (
+            <div className={styles.cardWrapperSecond}>
+              <Button onClick={() => setShowFigureImage(!showFigureImage)}>
+                Characteristic Plot
+              </Button>
+              {!showFigureImage && (
+                <img
+                  src="https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-12-5125-nand-2figure.png"
+                  className={styles.backgroundFigureImage}
+                />
+              )}
+            </div>
+          )}
         </Grid>
       </Grid>
     </>
