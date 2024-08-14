@@ -27,7 +27,8 @@
     overflow: hidden;
 }
 
-/* .cardWrapperThird {
+/* CSS for Characterization part-4 low high image */
+.cardWrapperLowHighImage {
     position: relative;
     margin: auto;
     display: flex;
@@ -39,7 +40,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
     overflow: hidden;
-} */
+}
 
 .css-card {
     position: relative;
@@ -68,11 +69,28 @@
     z-index: 1;
 }
 
+/* CSS for part4 nand image */
+.backgroundNandImage {
+    width: 975px;
+    height: 827px;
+    object-fit: cover;
+    z-index: 1;
+}
+
 /* css for graph image & low/high */
 .backgroundFigureImage,
 .lowGraphImage,
 .highGraphImage {
     width: 614px;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* CSS for graph image low/high part-4 */
+.lowGraphImagepart4,
+.highGraphImagepart4 {
+    width: 90%;
     height: 100%;
     object-fit: cover;
     z-index: 1;
@@ -90,6 +108,26 @@
 .onbtn5,
 .offbtn6,
 .onbtn6 {
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+/* CSS For Nand Part4 off and on button */
+.offbtn11,
+.onbtn11,
+.offbtn12,
+.onbtn12,
+.offbtn13,
+.onbtn13,
+.offbtn14,
+.onbtn14,
+.offbtn15,
+.onbtn15,
+.offbtn16,
+.onbtn16 {
     position: absolute;
     z-index: 2;
     cursor: pointer;
@@ -158,6 +196,70 @@
     top: 76px;
     right: 44px;
 }
+
+
+/* Box Button for Part4 Nand images */
+
+.offbtn11 {
+    top: 174px;
+    left: 188px;
+}
+
+.onbtn11 {
+    top: 174px;
+    left: 188px;
+}
+
+.offbtn12 {
+    top: 186px;
+    left: 326px;
+}
+
+.onbtn12 {
+    top: 186px;
+    left: 326px;
+}
+
+.offbtn13 {
+    top: 191px;
+    left: 379px;
+}
+
+.onbtn13 {
+    top: 191px;
+    left: 379px;
+}
+
+.offbtn14 {
+    top: 196px;
+    left: 436px;
+}
+
+.onbtn14 {
+    top: 196px;
+    left: 436px;
+}
+
+.offbtn15 {
+    top: 199px;
+    right: 160px;
+}
+
+.onbtn15 {
+    top: 199px;
+    right: 160px;
+}
+
+.offbtn16 {
+    top: 197px;
+    right: 212px;
+}
+
+.onbtn16 {
+    top: 197px;
+    right: 212px;
+}
+
 
 /* arrow line */
 .arrow {
@@ -257,4 +359,105 @@
     transform: rotate(157deg);
     top: 30px;
     right: 46px;
+}
+
+/* Characterization part 4 rotate div element */
+
+/* arrow line */
+.arrowDivEle {
+    position: absolute;
+    z-index: 2;
+    width: 33px;
+    height: 6px;
+    border-radius: 50px;
+}
+
+/* css for 1st arrow */
+.rotate11 {
+    background: green;
+    transform: rotate(45deg);
+    top: 189px;
+    left: 127px;
+}
+
+.rotate12 {
+    background: red;
+    transform: rotate(182deg);
+    top: 178px;
+    left: 125px;
+}
+
+/* css for 2nd arrow */
+.rotate13 {
+    background: red;
+    transform: rotate(16deg);
+    top: 137px;
+    left: 348px;
+}
+
+.rotate14 {
+    background: green;
+    transform: rotate(149deg);
+    top: 125px;
+    left: 347px;
+}
+
+/* css for 3rd arrow */
+.rotate15 {
+    background: red;
+    transform: rotate(15deg);
+    top: 135px;
+    left: 402px;
+}
+
+.rotate16 {
+    background: green;
+    transform: rotate(150deg);
+    top: 125px;
+    left: 400px;
+}
+
+/* css for 4th arrow */
+.rotate17 {
+    background: green;
+    transform: rotate(6deg);
+    top: 135px;
+    left: 462px;
+}
+
+.rotate18 {
+    background: red;
+    transform: rotate(119deg);
+    top: 124px;
+    left: 451px;
+}
+
+/* css for 5th arrow */
+.rotate19 {
+    background: red;
+    transform: rotate(4deg);
+    top: 139px;
+    right: 152px;
+}
+
+.rotate20 {
+    background: green;
+    transform: rotate(140deg);
+    top: 129px;
+    right: 157px;
+}
+
+/* css for 6th arrow */
+.rotate21 {
+    background: red;
+    transform: rotate(5deg);
+    top: 139px;
+    right: 206px;
+}
+
+.rotate22 {
+    background: green;
+    transform: rotate(150deg);
+    top: 129px;
+    right: 206px;
 }

@@ -11,6 +11,7 @@ import TwoBitAdder from "./TwoBItAdder/TwoBitAdder";
 import DigitalLogicFamiliesPart3 from "./CharacterizationOfDigitalLogic/DigitalLogicFamiliesPart3";
 import VideoPage from "./VideoPage/VideoPage";
 import VideoPages from "./VideoPage/VideoPages";
+import CharacterizationOfDigitalLogicPart4 from "./CharacterizationOfDigitalLogic/CharacterizationOfDigitalLogicPart4";
 
 function App() {
   return (
@@ -27,8 +28,9 @@ function App() {
       <SnackbarProvider>
         {/* <CharacterizationOfDigitalLogic /> */}
         {/* <DigitalLogicFamiliesPart3 /> */}
+        <CharacterizationOfDigitalLogicPart4 />
       </SnackbarProvider>
-      <VideoPage />
+      {/* <VideoPage /> */}
       {/* <VideoPages/> */}
     </div>
   );
