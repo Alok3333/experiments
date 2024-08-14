@@ -9,6 +9,8 @@ import SubFullAdder from "./SubFullAdder/SubFullAdder";
 import SubHalfAdder1 from "./SubHalfAdder/SubHalfAdder1";
 import TwoBitAdder from "./TwoBItAdder/TwoBitAdder";
 import DigitalLogicFamiliesPart3 from "./CharacterizationOfDigitalLogic/DigitalLogicFamiliesPart3";
+import VideoPage from "./VideoPage/VideoPage";
+import VideoPages from "./VideoPage/VideoPages";
 
 function App() {
   return (
@@ -24,8 +26,10 @@ function App() {
       {/* Wrap component */}
       <SnackbarProvider>
         {/* <CharacterizationOfDigitalLogic /> */}
-        <DigitalLogicFamiliesPart3 />
+        {/* <DigitalLogicFamiliesPart3 /> */}
       </SnackbarProvider>
+      <VideoPage />
+      {/* <VideoPages/> */}
     </div>
   );
 }
