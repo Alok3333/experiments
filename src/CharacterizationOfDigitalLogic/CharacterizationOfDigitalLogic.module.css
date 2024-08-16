@@ -77,6 +77,14 @@
     z-index: 1;
 }
 
+/* CSS for Resistor1 image */
+.backgroundImageResistor1 {
+    width: 975px;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
 /* css for graph image & low/high */
 .backgroundFigureImage,
 .lowGraphImage,
@@ -127,12 +135,49 @@
 .offbtn15,
 .onbtn15,
 .offbtn16,
-.onbtn16 {
+.onbtn16,
+.offbtnResistor1,
+.onbtnResistor1,
+.offbtnResistor2,
+.onbtnResistor2,
+.offbtnResistor3,
+.onbtnResistor3 {
     position: absolute;
     z-index: 2;
     cursor: pointer;
     width: 50px;
     height: 50px;
+}
+
+/* Resistor css for button */
+.offbtnResistor1 {
+    bottom: 276px;
+    left: 211px;
+}
+
+.onbtnResistor1 {
+    bottom: 276px;
+    left: 211px;
+}
+
+.offbtnResistor2 {
+    bottom: 148px;
+    left: 211px;
+}
+
+.onbtnResistor2 {
+    bottom: 148px;
+    left: 211px;
+}
+
+.offbtnResistor3 {
+    top: 34px;
+    right: 306px;
+}
+
+.onbtnResistor3 {
+    top: 34px;
+    right: 306px;
 }
 
 /* Box Button */
@@ -460,4 +505,68 @@
     transform: rotate(150deg);
     top: 129px;
     right: 206px;
+}
+
+/* CSS for Resistor1 bulf off & on */
+.bulfoff,
+.bulfon {
+    width: 65px;
+    position: absolute;
+    z-index: 1;
+    right: 239px;
+    bottom: 160px;
+}
+
+.greenlinelight {
+    width: 85.7%;
+    position: absolute;
+    z-index: 1;
+    right: 95px;
+    bottom: 101px;
+}
+
+.redlinelight {
+    width: 99.2%;
+    position: absolute;
+    z-index: 1;
+    right: 36px;
+    bottom: 106px;
+}
+
+/* CSS for battery moving */
+/* .battery {
+    position: absolute;
+    z-index: 1;
+    top: 102px;
+    right: 24px;
+    cursor: pointer;
+    min-height: 211px;
+    min-width: 141px;
+    transform: translate(11%, 0%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.battery.clicked {
+    transform: translate(0%, 0%) scale(1.2);
+} */
+.battery {
+    position: absolute;
+    z-index: 1;
+    width: 149px;
+    top: 17%;
+    right: 2%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.move {
+    position: absolute;
+    z-index: 1;
+    width: 149px;
+    top: 17%;
+    right: 6%;
+    height: auto;
+    cursor: pointer;
+    transform: translateX(50px);
 }

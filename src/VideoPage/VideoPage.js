@@ -5,6 +5,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import TextToSpeech from "./TextToSpeech";
 
 const videos = [
   {
@@ -19,7 +20,7 @@ const videos = [
     content: "It's text",
   },
   {
-    text: "Let start with first slide",
+    text: "Let start with first slide, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     duration: 10, //duration in second
     content: "It's second text",
   },
@@ -161,6 +162,13 @@ const VideoPage = () => {
           </span>
         </div>
       </div>
+      {/* Add the text speech component */}
+      <TextToSpeech 
+      text={videos[currentIndex].text}
+      start={(progress / videos[currentIndex].duration) * videos[currentIndex].duration}
+      end={videos[currentIndex].duration}
+      progress={progress}
+      />
     </div>
   );
 };
