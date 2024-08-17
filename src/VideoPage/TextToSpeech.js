@@ -22,37 +22,38 @@ const TextToSpeech = ({ text, start, end, progress }) => {
   // Created useRef to get dom element
   const utteranceRef = useRef(null);
 
-  //   useEffect(() => {
-  //     const synth = window.speechSynthesis;
-  //     const u = new SpeechSynthesisUtterance(text);
-  //     const voices = synth.getVoices();
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+    const u = new SpeechSynthesisUtterance(text);
+    const voices = synth.getVoices();
 
-  //     setUtterance(u);
+    setUtterance(u);
 
-  //     setVoice(voices[0]);
+    setVoice(voices[0]);
+
+    return () => {
+      synth.cancel();
+    };
+  }, [text]);
+
+  // useEffect(() => {
+  //   if (text) {
+  //     const utterance = new SpeechSynthesisUtterance(text);
+  //     console.log(utterance, "u")
+  //     utteranceRef.current = utterance;
+
+  //     // Start speaking when progress matches the start time
+  //     if (progress >= start && progress <= end) {
+  //       window.speechSynthesis.speak(utterance);
+  //     } else {
+  //       window.speechSynthesis.cancel(); // Cancel speech if progress is outside the desired range
+  //     }
 
   //     return () => {
-  //       synth.cancel();
+  //       window.speechSynthesis.cancel(); // Clean up speech synthesis
   //     };
-  //   }, [text]);
-
-  useEffect(() => {
-    if (text) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utteranceRef.current = utterance;
-
-      // Start speaking when progress matches the start time
-      if (progress >= start && progress <= end) {
-        window.speechSynthesis.speak(utterance);
-      } else {
-        window.speechSynthesis.cancel(); // Cancel speech if progress is outside the desired range
-      }
-
-      return () => {
-        window.speechSynthesis.cancel(); // Clean up speech synthesis
-      };
-    }
-  }, [text, start, end, progress]);
+  //   }
+  // }, [text, start, end, progress]);
 
   const handlePlay = () => {
     //alert('Checking');
@@ -95,7 +96,14 @@ const TextToSpeech = ({ text, start, end, progress }) => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        width: "660px",
+        position: "relative",
+        left: " 27%",
+        bottom: "55px",
+      }}
+    >
       <label>
         Voice:
         <Select value={voice?.name} onChange={handleVoiceChange}>
