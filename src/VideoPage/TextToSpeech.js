@@ -124,3 +124,16 @@ const TextToSpeech = ({ text, start, end, progress }) => {
 };
 
 export default TextToSpeech;
+
+
+// {videos[currentIndex].text && (
+//   <TextToSpeech
+//     text={videos[currentIndex].text}
+//     start={
+//       (progress / videos[currentIndex].duration) *
+//       videos[currentIndex].duration
+//     }
+//     end={videos[currentIndex].duration}
+//     progress={progress}
+//   />
+// )}

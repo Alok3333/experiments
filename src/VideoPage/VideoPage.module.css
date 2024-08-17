@@ -78,9 +78,19 @@
 }
 
 .videoPlayerBox {
+    position: relative;
     width: 100%;
     height: 630px;
     margin-bottom: 20px;
+}
+
+.videoPlayerContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .imageContainer {
@@ -107,11 +117,24 @@
     background-color: black;
 }
 
+/* new update on progress bar */
 .progressBar {
+    position: relative;
     width: 100%;
     height: 8px;
-    margin: 20px 0;
+    margin-bottom: 20px;
+    background-color: #e0e0e0;
+    cursor: pointer;
 }
+
+.progressBarFill {
+    height: 100%;
+    background-color: #FF0000;
+    transition: width 0.1s;
+}
+
+
+
 
 .controls {
     display: flex;
