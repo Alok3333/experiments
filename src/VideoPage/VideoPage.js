@@ -12,7 +12,7 @@
 //     video: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
 //     content:
 //       "Shaitaan Theme (Song) | Shaitaan | Ajay Devgn, R. Madhavan, Jyotika | Amit T, Kumaar, Siddharth B",
-//     duration: 52, // Ensure duration is specified for videos
+//     duration: 52,
 //   },
 //   {
 //     video: "https://www.youtube.com/watch?v=jLshY-zUfZ4",
@@ -258,12 +258,11 @@ import {
   Button,
   FormControl,
   InputLabel,
-  Select,
   MenuItem,
+  Select,
 } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
-import StopIcon from "@mui/icons-material/Stop";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ReactPlayer from "react-player/lazy";
@@ -273,7 +272,7 @@ const videos = [
     video: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
     content:
       "Shaitaan Theme (Song) | Shaitaan | Ajay Devgn, R. Madhavan, Jyotika | Amit T, Kumaar, Siddharth B",
-    duration: 52, // Ensure duration is specified for videos
+    duration: 52,
   },
   {
     video: "https://www.youtube.com/watch?v=jLshY-zUfZ4",
@@ -295,7 +294,7 @@ const videos = [
   {
     text: "Text-to-speech feature is now available on relatively any website or blog. It's a game changer that you can listen to the content instead of reading it. Especially effective for people with visual or cognitive impairments or people who are on the go. I came up with the idea to implement it for my blog, so this is how I started doing a research on this topic which ended up being a tutorial for you. So in this tutorial, we will go through the process of building a text-to-speech component in React. We will use the Web Speech API to implement the text-to-speech functionality.",
     content: "It's second text",
-    duration: 49,
+    duration: 60,
   },
   {
     image:
@@ -316,129 +315,55 @@ const videos = [
   },
 ];
 
-const splitTextIntoChunks = (text, maxLength = 500) => {
-  const chunks = [];
-  for (let i = 0; i < text.length; i += maxLength) {
-    chunks.push(text.slice(i, i + maxLength));
-  }
-  return chunks;
-};
-
 const VideoPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [utterance, setUtterance] = useState(null);
+  const [speechSupported, setSpeechSupported] = useState(true);
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
-  const [textChunks, setTextChunks] = useState([]);
-  const [currentChunkIndex, setCurrentChunkIndex] = useState(0);
-  const [isTextPlaying, setIsTextPlaying] = useState(false);
   const playerRef = useRef(null);
-  const progressIntervalRef = useRef(null);
-  const textTimeoutRef = useRef(null);
 
   useEffect(() => {
-    const synth = window.speechSynthesis;
+    // Check if speech synthesis is supported
+    setSpeechSupported("speechSynthesis" in window);
 
+    // Get available voices
     const updateVoices = () => {
-      setVoices(synth.getVoices());
+      const availableVoices = window.speechSynthesis.getVoices();
+      setVoices(availableVoices);
+      if (availableVoices.length > 0 && !selectedVoice) {
+        setSelectedVoice(availableVoices[0]); // Set default voice if not set
+      }
     };
 
+    // Update voices on load and when voices change
     updateVoices();
-    synth.onvoiceschanged = updateVoices;
+    window.speechSynthesis.onvoiceschanged = updateVoices;
 
-    return () => {
-      if (utterance) {
-        synth.cancel();
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (videos[currentIndex].text) {
-      setTextChunks(splitTextIntoChunks(videos[currentIndex].text));
-    }
-  }, [currentIndex]);
-
-  useEffect(() => {
+    let timer;
     if (isPlaying && videos[currentIndex].duration) {
-      if (videos[currentIndex].text && !isTextPlaying) {
-        const synth = window.speechSynthesis;
-        const speech = new SpeechSynthesisUtterance();
-        speech.voice = selectedVoice || synth.getVoices()[0];
-        speech.rate = 1;
-        speech.pitch = 1;
-
-        speech.onstart = () => {
-          setIsTextPlaying(true);
-          setCurrentChunkIndex(0); // Start from the beginning of the text chunks
-        };
-
-        speech.onend = () => {
-          setIsTextPlaying(false);
-          if (currentIndex < videos.length - 1) {
-            setCurrentIndex((prevIndex) => prevIndex + 1);
-            setProgress(0);
-          } else {
-            setIsPlaying(false);
-          }
-        };
-
-        const speakChunk = (index) => {
-          if (index < textChunks.length) {
-            speech.text = textChunks[index];
-            window.speechSynthesis.speak(speech);
-
-            // Schedule the next chunk
-            textTimeoutRef.current = setTimeout(() => {
-              window.speechSynthesis.cancel(); // Stop current chunk
-              speakChunk(index + 1); // Speak the next chunk
-            }, speech.text.length * 100); // Adjust this timeout based on chunk length
-          }
-        };
-
-        speakChunk(currentChunkIndex);
-      } else if (videos[currentIndex].video) {
-        const timer = setInterval(() => {
-          setProgress((prevProgress) => {
-            const newProgress = prevProgress + 1;
-            if (newProgress >= videos[currentIndex].duration) {
-              clearInterval(timer);
-              if (currentIndex < videos.length - 1) {
-                setCurrentIndex((prevIndex) => prevIndex + 1);
-                setProgress(0);
-              } else {
-                setIsPlaying(false);
-              }
+      timer = setInterval(() => {
+        setProgress((prevProgress) => {
+          const newProgress = prevProgress + 1;
+          if (newProgress >= videos[currentIndex].duration) {
+            clearInterval(timer);
+            if (currentIndex < videos.length - 1) {
+              setCurrentIndex((prevIndex) => prevIndex + 1);
+              setProgress(0);
+            } else {
+              setIsPlaying(false);
             }
-            return Math.min(newProgress, videos[currentIndex].duration);
-          });
-        }, 1000);
-      }
-    } else if (!isPlaying && utterance) {
-      window.speechSynthesis.cancel();
-      setIsTextPlaying(false);
+          }
+          return Math.min(newProgress, videos[currentIndex].duration);
+        });
+      }, 1000);
     }
-
-    return () => {
-      clearInterval(progressIntervalRef.current);
-      clearTimeout(textTimeoutRef.current);
-      if (utterance) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, [isPlaying, currentIndex, selectedVoice, textChunks, currentChunkIndex]);
+    return () => clearInterval(timer);
+  }, [isPlaying, currentIndex, selectedVoice]);
 
   const handlePlayPause = () => {
     setIsPlaying((prevIsPlaying) => !prevIsPlaying);
-  };
-
-  const handleStop = () => {
-    window.speechSynthesis.cancel();
-    setIsPlaying(false);
-    setIsTextPlaying(false);
-    setProgress(0);
   };
 
   const handleNext = () => {
@@ -465,11 +390,6 @@ const VideoPage = () => {
     if (playerRef.current) {
       playerRef.current.seekTo(progressPercentage, "fraction");
     }
-  };
-
-  const handleVoiceChange = (event) => {
-    const selected = voices.find((voice) => voice.name === event.target.value);
-    setSelectedVoice(selected);
   };
 
   const formatDuration = (duration) => {
@@ -500,9 +420,110 @@ const VideoPage = () => {
         </div>
       );
     } else if (text) {
-      return <div className={styles.textContent}>{text}</div>;
+      return (
+        <div className={styles.textContent}>
+          {text}
+          {speechSupported && (
+            <>
+              <Button onClick={handleSpeakText} className={styles.speakButton}>
+                Speak
+              </Button>
+              <FormControl fullWidth className={styles.voiceSelect}>
+                <InputLabel>Voice</InputLabel>
+                <Select
+                  value={selectedVoice ? selectedVoice.name : ""}
+                  onChange={(e) => {
+                    const voice = voices.find((v) => v.name === e.target.value);
+                    setSelectedVoice(voice);
+                  }}
+                >
+                  {voices.map((voice) => (
+                    <MenuItem key={voice.name} value={voice.name}>
+                      {voice.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </>
+          )}
+        </div>
+      );
     }
     return null;
+  };
+
+  // const handleSpeakText = () => {
+  //   const { text } = videos[currentIndex];
+  //   console.log("Text for speech:", text); // Debugging line1
+  //   if (text && speechSupported) {
+  //     try {
+  //       const utterance = new SpeechSynthesisUtterance(text);
+  //       if (selectedVoice) {
+  //         utterance.voice = selectedVoice;
+  //       }
+
+  //       utterance.onstart = () => {
+  //         console.log("SpeechSynthesisUtterance.onstart");
+  //       };
+  //       utterance.onend = () => {
+  //         console.log("SpeechSynthesisUtterance.onend");
+  //       };
+  //       utterance.onerror = (event) => {
+  //         console.error("SpeechSynthesisUtterance.onerror", event);
+  //       };
+
+  //       console.log("Before speaking text:", text); // Debugging line2
+  //       window.speechSynthesis.speak(utterance);
+  //       console.log("Speak method called"); // Debugging line3
+  //     } catch (error) {
+  //       console.error("Error speaking text:", error);
+  //     }
+  //   } else {
+  //     console.error("No text found or speech synthesis is not supported.");
+  //   }
+  // };
+
+  const handleSpeakText = () => {
+    const { text } = videos[currentIndex];
+    if (text && speechSupported) {
+      try {
+        const chunkSize = 500; // Adjust chunk size if needed
+        let startIndex = 0;
+        const speakNextChunk = () => {
+          if (startIndex >= text.length) return; // Exit if all text is spoken
+
+          const endIndex = Math.min(startIndex + chunkSize, text.length);
+          const chunk = text.substring(startIndex, endIndex);
+          const utterance = new SpeechSynthesisUtterance(chunk);
+
+          if (selectedVoice) {
+            utterance.voice = selectedVoice;
+          }
+
+          utterance.onstart = () => {
+            console.log("SpeechSynthesisUtterance.onstart");
+          };
+          utterance.onend = () => {
+            console.log("SpeechSynthesisUtterance.onend");
+            startIndex = endIndex;
+            speakNextChunk(); // Continue with next chunk
+          };
+          utterance.onerror = (event) => {
+            console.error("SpeechSynthesisUtterance.onerror", event);
+          };
+
+          console.log("Before speaking text chunk:", chunk);
+          window.speechSynthesis.speak(utterance);
+          console.log("Speak method called");
+        };
+
+        speakNextChunk(); // Start speaking text
+      } catch (error) {
+        console.error("Error speaking text:", error);
+      }
+    } else {
+      console.error("No text found or speech synthesis is not supported.");
+    }
   };
 
   return (
@@ -530,14 +551,7 @@ const VideoPage = () => {
                 <ChevronLeftIcon />
               </Button>
               <Button onClick={handlePlayPause}>
-                {isPlaying && !isTextPlaying ? (
-                  <PauseIcon />
-                ) : (
-                  <PlayArrowIcon />
-                )}
-              </Button>
-              <Button onClick={handleStop}>
-                <StopIcon />
+                {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
               </Button>
               <Button
                 onClick={handleNext}
@@ -546,26 +560,9 @@ const VideoPage = () => {
                 <ChevronRightIcon />
               </Button>
             </div>
-            {videos[currentIndex].text && (
-              <FormControl>
-                <InputLabel id="voice-select-label">Voice</InputLabel>
-                <Select
-                  labelId="voice-select-label"
-                  value={selectedVoice ? selectedVoice.name : ""}
-                  onChange={handleVoiceChange}
-                >
-                  {voices.map((voice) => (
-                    <MenuItem key={voice.name} value={voice.name}>
-                      {voice.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            )}
             <span className={styles.duration}>
-              {videos[currentIndex].text ? formatDuration(progress) : ""}{" "}
-              {videos[currentIndex].duration &&
-                formatDuration(videos[currentIndex].duration)}
+              {formatDuration(progress)} /{" "}
+              {formatDuration(videos[currentIndex].duration)}
             </span>
           </div>
         </>
