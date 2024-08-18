@@ -3,6 +3,7 @@ import styles from "./VideoPage.module.css";
 import {
   Button,
   FormControl,
+  IconButton,
   InputLabel,
   MenuItem,
   Select,
@@ -12,6 +13,7 @@ import PauseIcon from "@mui/icons-material/Pause";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ReactPlayer from "react-player/lazy";
+import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 
 const videos = [
   {
@@ -178,12 +180,9 @@ const VideoPage = () => {
     } else if (text) {
       return (
         <div className={styles.textContent}>
-          {text}
+          {/* {text} */}
           {speechSupported && (
             <>
-              <Button onClick={handleSpeakText} className={styles.speakButton}>
-                Speak
-              </Button>
               <FormControl fullWidth className={styles.voiceSelect}>
                 <InputLabel>Voice</InputLabel>
                 <Select
@@ -200,6 +199,17 @@ const VideoPage = () => {
                   ))}
                 </Select>
               </FormControl>
+              <div className={styles.textContentText}>
+              {text}
+              </div>
+              <div>
+                <IconButton
+                  onClick={handleSpeakText}
+                  className={styles.speakButton}
+                >
+                  <KeyboardVoiceIcon />
+                </IconButton>
+              </div>
             </>
           )}
         </div>
