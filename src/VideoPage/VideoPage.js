@@ -1,411 +1,98 @@
-// import React, { useState, useEffect, useRef } from "react";
-// import styles from "./VideoPage.module.css";
-// import {
-//   Button,
-//   FormControl,
-//   IconButton,
-//   InputLabel,
-//   MenuItem,
-//   Select,
-// } from "@mui/material";
-// import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-// import PauseIcon from "@mui/icons-material/Pause";
-// import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-// import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-// import ReactPlayer from "react-player/lazy";
-// import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
-
-// const videos = [
-//   {
-//     video: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
-//     content:
-//       "Shaitaan Theme (Song) | Shaitaan | Ajay Devgn, R. Madhavan, Jyotika | Amit T, Kumaar, Siddharth B",
-//     duration: 52,
-//   },
-//   {
-//     video: "https://www.youtube.com/watch?v=jLshY-zUfZ4",
-//     content:
-//       "Shaitaan Theme (Song) | Shaitaan | Ajay Devgn, R. Madhavan, Jyotika | Amit T, Kumaar, Siddharth B",
-//     duration: 137,
-//   },
-//   {
-//     image:
-//       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5tBCXngoqUVlR4bwi619gquT3UtCHBSffOQ2EM5rWr4Zh3Ht9XoCqMgnrN7FC2FzupYHuj3UhIhf_oz0rglhGt0UcFzcVgJV0Hg6ANOYWqAt0ubOc1AGJ7AXJqQ5p8cADuwvw_fYFmd-J/s1600/learning-1959541_1920.jpg",
-//     content: "It's images Learning images",
-//     duration: 70,
-//   },
-//   {
-//     text: "Welcome to video page",
-//     content: "It's text",
-//     duration: 10,
-//   },
-//   {
-//     text: "Text-to-speech feature is now available on relatively any website or blog. It's a game changer that you can listen to the content instead of reading it. Especially effective for people with visual or cognitive impairments or people who are on the go. I came up with the idea to implement it for my blog, so this is how I started doing a research on this topic which ended up being a tutorial for you. So in this tutorial, we will go through the process of building a text-to-speech component in React. We will use the Web Speech API to implement the text-to-speech functionality.",
-//     content: "It's second text",
-//     duration: 62,
-//   },
-//   {
-//     image:
-//       "https://th.bing.com/th/id/R.ff3a044a3fa044105293a5fd1fda1d7f?rik=QIfOnCdYyhmZSA&riu=http%3a%2f%2feducation.okfn.org%2ffiles%2f2015%2f07%2fedusoft.jpg&ehk=a33FReMH2rrdBgDFgp%2fKM0wrjqXgbgGoEi%2b5vtu0toE%3d&risl=&pid=ImgRaw&r=0",
-//     content: "It's second image",
-//     duration: 25,
-//   },
-//   {
-//     image:
-//       "https://opensource.com/sites/default/files/lead-images/computer_desk_home_laptop_browser.png",
-//     content: "It's 3rd image",
-//     duration: 60,
-//   },
-//   {
-//     text: "Let start from here second slide",
-//     content: "It's 3rd text",
-//     duration: 10,
-//   },
-// ];
-
-// const VideoPage = () => {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const [progress, setProgress] = useState(0);
-//   const [isPlaying, setIsPlaying] = useState(false);
-//   const [speechSupported, setSpeechSupported] = useState(true);
-//   const [voices, setVoices] = useState([]);
-//   const [selectedVoice, setSelectedVoice] = useState(null);
-//   const playerRef = useRef(null);
-
-//   useEffect(() => {
-//     // Check if speech synthesis is supported
-//     setSpeechSupported("speechSynthesis" in window);
-
-//     // Get available voices
-//     const updateVoices = () => {
-//       const availableVoices = window.speechSynthesis.getVoices();
-//       setVoices(availableVoices);
-//       if (availableVoices.length > 0 && !selectedVoice) {
-//         setSelectedVoice(availableVoices[0]); // Set default voice if not set
-//       }
-//     };
-
-//     // Update voices on load and when voices change
-//     updateVoices();
-//     window.speechSynthesis.onvoiceschanged = updateVoices;
-
-//     let timer;
-//     if (isPlaying && videos[currentIndex].duration) {
-//       timer = setInterval(() => {
-//         setProgress((prevProgress) => {
-//           const newProgress = prevProgress + 1;
-//           if (newProgress >= videos[currentIndex].duration) {
-//             clearInterval(timer);
-//             if (currentIndex < videos.length - 1) {
-//               setCurrentIndex((prevIndex) => prevIndex + 1);
-//               setProgress(0);
-//             } else {
-//               setIsPlaying(false);
-//             }
-//           }
-//           return Math.min(newProgress, videos[currentIndex].duration);
-//         });
-//       }, 1000);
-//     }
-//     return () => clearInterval(timer);
-//   }, [isPlaying, currentIndex, selectedVoice]);
-
-//   // Handle for play pause button
-//   const handlePlayPause = () => {
-//     setIsPlaying((prevIsPlaying) => !prevIsPlaying);
-//   };
-
-//   // Handle for going next page button
-//   const handleNext = () => {
-//     if (currentIndex < videos.length - 1) {
-//       setCurrentIndex((prevIndex) => prevIndex + 1);
-//       setProgress(0);
-//     }
-//   };
-
-//   // Handle for going previous page button
-//   const handlePrevious = () => {
-//     if (currentIndex > 0) {
-//       setCurrentIndex((prevIndex) => prevIndex - 1);
-//       setProgress(0);
-//     }
-//   };
-
-//   // Handle for progressBar
-//   const handleProgressBarClick = (e) => {
-//     const progressBar = e.currentTarget;
-//     const clickPosition = e.clientX - progressBar.getBoundingClientRect().left;
-//     const progressPercentage = clickPosition / progressBar.offsetWidth;
-//     const newProgress = progressPercentage * videos[currentIndex].duration;
-
-//     setProgress(newProgress);
-//     if (playerRef.current) {
-//       playerRef.current.seekTo(progressPercentage, "fraction");
-//     }
-//   };
-
-//   // Format of duration sec, min, hou
-//   const formatDuration = (duration) => {
-//     const hours = Math.floor(duration / 3600);
-//     const minutes = Math.floor((duration % 3600) / 60);
-//     const seconds = Math.floor(duration % 60);
-
-//     return `${hours > 0 ? `${hours}:` : ""}${minutes
-//       .toString()
-//       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-//   };
-
-//   // Render the component according to the (video|image|text)
-//   const renderContent = () => {
-//     const { video, image, text } = videos[currentIndex];
-//     if (video) {
-//       return (
-//         <div className={styles.videoPlayerBox}>
-//           <ReactPlayer
-//             url={video}
-//             playing={isPlaying}
-//             width="100%"
-//             height="100%"
-//             className={styles.videoPlayerContent}
-//             ref={playerRef}
-//           />
-//         </div>
-//       );
-//     } else if (image) {
-//       return (
-//         <div className={styles.imageContainer}>
-//           <img src={image} alt="content" className={styles.image} />
-//         </div>
-//       );
-//     } else if (text) {
-//       return (
-//         <div className={styles.textContent}>
-//           {/* {text} */}
-//           {speechSupported && (
-//             <>
-//               <FormControl fullWidth className={styles.voiceSelect}>
-//                 <InputLabel>Voice</InputLabel>
-//                 <Select
-//                   value={selectedVoice ? selectedVoice.name : ""}
-//                   onChange={(e) => {
-//                     const voice = voices.find((v) => v.name === e.target.value);
-//                     setSelectedVoice(voice);
-//                   }}
-//                 >
-//                   {voices.map((voice) => (
-//                     <MenuItem key={voice.name} value={voice.name}>
-//                       {voice.name}
-//                     </MenuItem>
-//                   ))}
-//                 </Select>
-//               </FormControl>
-//               <div className={styles.textContentText}>
-//               {text}
-//               </div>
-//               <div>
-//                 <IconButton
-//                   onClick={handleSpeakText}
-//                   className={styles.speakButton}
-//                 >
-//                   <KeyboardVoiceIcon />
-//                 </IconButton>
-//               </div>
-//             </>
-//           )}
-//         </div>
-//       );
-//     }
-//     return null;
-//   };
-
-//   // const handleSpeakText = () => {
-//   //   const { text } = videos[currentIndex];
-//   //   console.log("Text for speech:", text); // Debugging line1
-//   //   if (text && speechSupported) {
-//   //     try {
-//   //       const utterance = new SpeechSynthesisUtterance(text);
-//   //       if (selectedVoice) {
-//   //         utterance.voice = selectedVoice;
-//   //       }
-
-//   //       utterance.onstart = () => {
-//   //         console.log("SpeechSynthesisUtterance.onstart");
-//   //       };
-//   //       utterance.onend = () => {
-//   //         console.log("SpeechSynthesisUtterance.onend");
-//   //       };
-//   //       utterance.onerror = (event) => {
-//   //         console.error("SpeechSynthesisUtterance.onerror", event);
-//   //       };
-
-//   //       console.log("Before speaking text:", text); // Debugging line2
-//   //       window.speechSynthesis.speak(utterance);
-//   //       console.log("Speak method called"); // Debugging line3
-//   //     } catch (error) {
-//   //       console.error("Error speaking text:", error);
-//   //     }
-//   //   } else {
-//   //     console.error("No text found or speech synthesis is not supported.");
-//   //   }
-//   // };
-
-//   // Handle the text to speech
-//   const handleSpeakText = () => {
-//     const { text } = videos[currentIndex];
-//     if (text && speechSupported) {
-//       try {
-//         const chunkSize = 500; // Adjust chunk size if needed
-//         let startIndex = 0;
-//         const speakNextChunk = () => {
-//           if (startIndex >= text.length) return; // Exit if all text is spoken
-
-//           const endIndex = Math.min(startIndex + chunkSize, text.length);
-//           const chunk = text.substring(startIndex, endIndex);
-//           const utterance = new SpeechSynthesisUtterance(chunk);
-
-//           if (selectedVoice) {
-//             utterance.voice = selectedVoice;
-//           }
-
-//           utterance.onstart = () => {
-//             console.log("SpeechSynthesisUtterance.onstart");
-//           };
-//           utterance.onend = () => {
-//             console.log("SpeechSynthesisUtterance.onend");
-//             startIndex = endIndex;
-//             speakNextChunk(); // Continue with next chunk
-//           };
-//           utterance.onerror = (event) => {
-//             console.error("SpeechSynthesisUtterance.onerror", event);
-//           };
-
-//           console.log("Before speaking text chunk:", chunk);
-//           window.speechSynthesis.speak(utterance);
-//           console.log("Speak method called");
-//         };
-
-//         speakNextChunk(); // Start speaking text
-//       } catch (error) {
-//         console.error("Error speaking text:", error);
-//       }
-//     } else {
-//       console.error("No text found or speech synthesis is not supported.");
-//     }
-//   };
-
-//   return (
-//     <div className={styles.container}>
-//       <div className={styles.header}>Video Page</div>
-//       {renderContent()}
-//       {videos[currentIndex].duration && (
-//         <>
-//           <div
-//             className={styles.progressBar}
-//             onClick={handleProgressBarClick}
-//             role="button"
-//             aria-label="Progress bar"
-//           >
-//             <div
-//               className={styles.progressBarFill}
-//               style={{
-//                 width: `${(progress / videos[currentIndex].duration) * 100}%`,
-//               }}
-//             />
-//           </div>
-//           <div className={styles.controls}>
-//             <div>
-//               <Button onClick={handlePrevious} disabled={currentIndex === 0}>
-//                 <ChevronLeftIcon />
-//               </Button>
-//               <Button onClick={handlePlayPause}>
-//                 {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-//               </Button>
-//               <Button
-//                 onClick={handleNext}
-//                 disabled={currentIndex === videos.length - 1}
-//               >
-//                 <ChevronRightIcon />
-//               </Button>
-//             </div>
-//             <span className={styles.duration}>
-//               {formatDuration(progress)} /{" "}
-//               {formatDuration(videos[currentIndex].duration)}
-//             </span>
-//           </div>
-//         </>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default VideoPage;
-
-import React, { useState, useEffect, useRef } from "react";
-import styles from "./video.module.css";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import ReactPlayer from "react-player/lazy";
 import {
-  Button,
+  Box,
   FormControl,
   IconButton,
   InputLabel,
   MenuItem,
   Select,
+  Slider,
+  Typography,
 } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ReactPlayer from "react-player/lazy";
 import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
+import styles from "./Video2.module.css";
 
 const videos = [
   {
     video: "https://www.youtube.com/watch?v=CrHeuJqkJX4",
+    image: "",
+    text: "Learning...",
     content: "New Product Launch | Teaser",
     duration: 23,
+    type: "video",
   },
   {
     video: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+    image: "",
+    text: "Text is not able to see.",
     content: "Sintel | Halina Reijn | Thom Hoffman",
     duration: 52,
+    type: "video",
   },
   {
     video: "https://www.youtube.com/watch?v=I9tGP4z7ETQ",
-    content: "An Initiative By Campus.Technology | www.campus.technology",
+    image: "",
+    text: "This video created by campus technology.",
+    content:
+      "An Initiative By Campus.Technology | www.campus.technology | Suman Nandy",
     duration: 49,
+    type: "video",
   },
   {
-    text: "Learn from here",
+    video: "",
     image:
       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5tBCXngoqUVlR4bwi619gquT3UtCHBSffOQ2EM5rWr4Zh3Ht9XoCqMgnrN7FC2FzupYHuj3UhIhf_oz0rglhGt0UcFzcVgJV0Hg6ANOYWqAt0ubOc1AGJ7AXJqQ5p8cADuwvw_fYFmd-J/s1600/learning-1959541_1920.jpg",
+    text: "Learn from here",
     content: "It's images Learning images",
-    duration: 10,
+    duration: 5,
+    type: "text-image",
   },
   {
+    video: "",
     text: "Welcome to video page",
+    image: "",
     content: "It's text",
     duration: 10,
+    type: "text",
   },
   {
+    video: "",
     text: "Text-to-speech feature is now available on relatively any website or blog. It's a game changer that you can listen to the content instead of reading it. Especially effective for people with visual or cognitive impairments or people who are on the go. I came up with the idea to implement it for my blog, so this is how I started doing a research on this topic which ended up being a tutorial for you. So in this tutorial, we will go through the process of building a text-to-speech component in React. We will use the Web Speech API to implement the text-to-speech functionality.",
+    image: "",
     content: "It's second text",
     duration: 62,
+    type: "text",
   },
   {
+    video: "",
+    text: "Text are not visiable",
     image:
       "https://th.bing.com/th/id/R.ff3a044a3fa044105293a5fd1fda1d7f?rik=QIfOnCdYyhmZSA&riu=http%3a%2f%2feducation.okfn.org%2ffiles%2f2015%2f07%2fedusoft.jpg&ehk=a33FReMH2rrdBgDFgp%2fKM0wrjqXgbgGoEi%2b5vtu0toE%3d&risl=&pid=ImgRaw&r=0",
     content: "It's second image",
-    duration: 25,
+    duration: 10,
+    type: "image",
   },
   {
+    video: "",
+    text: "It is a 3rd image",
     image:
       "https://opensource.com/sites/default/files/lead-images/computer_desk_home_laptop_browser.png",
     content: "It's 3rd image",
-    duration: 20,
+    duration: 10,
+    type: "image",
   },
   {
+    video: "",
     text: "Let start from here second slide",
+    image: "",
     content: "It's 3rd text",
-    duration: 10,
+    duration: 8,
+    type: "text",
   },
 ];
 
@@ -418,9 +105,10 @@ const VideoPage = () => {
   );
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
-  const [animationClass, setAnimationClass] = useState(styles.fadeIn);
+  const [transitioning, setTransitioning] = useState(false);
   const playerRef = useRef(null);
 
+  // Load available voices
   useEffect(() => {
     const updateVoices = () => {
       const availableVoices = window.speechSynthesis.getVoices();
@@ -432,37 +120,30 @@ const VideoPage = () => {
 
     updateVoices();
     window.speechSynthesis.onvoiceschanged = updateVoices;
+  }, [selectedVoice]);
 
+  // Handle progress and automatic progression
+  useEffect(() => {
     let timer;
-    if (isPlaying && videos[currentIndex].duration) {
+    if (isPlaying) {
       timer = setInterval(() => {
         setProgress((prevProgress) => {
           const newProgress = prevProgress + 1;
           if (newProgress >= videos[currentIndex].duration) {
             clearInterval(timer);
-            if (currentIndex < videos.length - 1) {
-              setCurrentIndex((prevIndex) => prevIndex + 1);
-              setProgress(0);
-            } else {
-              setIsPlaying(false);
-            }
+            handleNext();
           }
           return Math.min(newProgress, videos[currentIndex].duration);
         });
       }, 1000);
+    } else if (playerRef.current) {
+      setProgress(playerRef.current.getCurrentTime());
     }
+
     return () => clearInterval(timer);
-  }, [isPlaying, currentIndex, selectedVoice]);
+  }, [isPlaying, currentIndex]);
 
-  useEffect(() => {
-    setAnimationClass(styles.fadeOut);
-    const timeout = setTimeout(() => {
-      setAnimationClass(styles.fadeIn);
-    }, 1000);
-
-    return () => clearTimeout(timeout);
-  }, [currentIndex]);
-
+  // Handle keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (event) => {
       switch (event.key) {
@@ -481,39 +162,63 @@ const VideoPage = () => {
     };
 
     document.addEventListener("keydown", handleKeyDown);
-
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [currentIndex, isPlaying]);
+  }, [isPlaying, currentIndex]);
 
-  const handlePlayPause = () => {
-    setIsPlaying((prevIsPlaying) => !prevIsPlaying);
-  };
+  // Handle text-to-speech
+  useEffect(() => {
+    if (speechSupported) {
+      cancelSpeech();
+      if (
+        videos[currentIndex].type === "text" ||
+        videos[currentIndex].type === "text-image"
+      ) {
+        handleSpeakText();
+      }
+    }
+  }, [currentIndex, selectedVoice, speechSupported]);
+
+  // Handle content transitions
+  useEffect(() => {
+    if (transitioning) {
+      const timer = setTimeout(() => {
+        setTransitioning(false);
+      }, 500); // Duration of the fade-out animation
+      return () => clearTimeout(timer);
+    }
+  }, [transitioning]);
+
+  const handlePlayPause = () => setIsPlaying((prev) => !prev);
 
   const handleNext = () => {
     if (currentIndex < videos.length - 1) {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
+      cancelSpeech();
+      setTransitioning(true);
+      setCurrentIndex((prev) => prev + 1);
       setProgress(0);
+    } else {
+      setIsPlaying(false);
     }
   };
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
-      setCurrentIndex((prevIndex) => prevIndex - 1);
+      cancelSpeech();
+      setTransitioning(true);
+      setCurrentIndex((prev) => prev - 1);
       setProgress(0);
     }
   };
 
-  const handleProgressBarClick = (e) => {
-    const progressBar = e.currentTarget;
-    const clickPosition = e.clientX - progressBar.getBoundingClientRect().left;
-    const progressPercentage = clickPosition / progressBar.offsetWidth;
-    const newProgress = progressPercentage * videos[currentIndex].duration;
-
-    setProgress(newProgress);
+  const handleProgressChange = (event, newValue) => {
+    setProgress(newValue);
     if (playerRef.current) {
-      playerRef.current.seekTo(progressPercentage, "fraction");
+      playerRef.current.seekTo(
+        newValue / videos[currentIndex].duration,
+        "fraction"
+      );
     }
   };
 
@@ -521,262 +226,190 @@ const VideoPage = () => {
     const hours = Math.floor(duration / 3600);
     const minutes = Math.floor((duration % 3600) / 60);
     const seconds = Math.floor(duration % 60);
-
     return `${hours > 0 ? `${hours}:` : ""}${minutes
       .toString()
       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
 
-  // const renderContent = () => {
-  //   const { video, image, text } = videos[currentIndex];
-  //   if (video) {
-  //     return (
-  //       <div className={`${styles.videoPlayerBox} ${animationClass}`}>
-  //         <ReactPlayer
-  //           url={video}
-  //           playing={isPlaying}
-  //           width="100%"
-  //           height="100%"
-  //           className={styles.videoPlayerContent}
-  //           ref={playerRef}
-  //         />
-  //       </div>
-  //     );
-  //   } else if (image) {
-  //     return (
-  //       <div className={`${styles.imageContainer} ${animationClass}`}>
-  //         <img src={image} alt="content" className={styles.image} />
-  //       </div>
-  //     );
-  //   } else if (text) {
-  //     return (
-  //       <div className={`${styles.textContent} ${animationClass}`}>
-  //         {speechSupported && (
-  //           <>
-  //             <FormControl fullWidth className={styles.voiceSelect}>
-  //               <InputLabel>Voice</InputLabel>
-  //               <Select
-  //                 value={selectedVoice ? selectedVoice.name : ""}
-  //                 onChange={(e) => {
-  //                   const voice = voices.find((v) => v.name === e.target.value);
-  //                   setSelectedVoice(voice);
-  //                 }}
-  //               >
-  //                 {voices.map((voice) => (
-  //                   <MenuItem key={voice.name} value={voice.name}>
-  //                     {voice.name}
-  //                   </MenuItem>
-  //                 ))}
-  //               </Select>
-  //             </FormControl>
-  //             <div className={styles.textContentText}>{text}</div>
-  //             <div style={{ marginLeft: "52px" }}>
-  //               <IconButton
-  //                 onClick={handleSpeakText}
-  //                 className={styles.speakButton}
-  //               >
-  //                 <KeyboardVoiceIcon />
-  //               </IconButton>
-  //             </div>
-  //           </>
-  //         )}
-  //       </div>
-  //     );
-  //   }
-  //   return null;
-  // };
+  const renderContent = useCallback(() => {
+    const { video, image, text, type } = videos[currentIndex];
+    const contentClasses = transitioning
+      ? `${styles.fadeOut}`
+      : `${styles.fadeIn}`;
 
-  const renderContent = () => {
-    const { video, image, text } = videos[currentIndex];
-
-    if (video) {
-      return (
-        <div className={`${styles.videoPlayerBox} ${animationClass}`}>
-          <ReactPlayer
-            url={video}
-            playing={isPlaying}
-            width="100%"
-            height="100%"
-            className={styles.videoPlayerContent}
-            ref={playerRef}
-          />
-        </div>
-      );
-    } else if (image && text) {
-      return (
-        <>
-          {speechSupported && (
-            <div style={{display: "flex", flexDirection: "row", width: "25%", marginTop: "-57px"}}>
-              <FormControl className={styles.voiceSelect}>
-                <InputLabel>Voice</InputLabel>
-                <Select
-                  value={selectedVoice ? selectedVoice.name : ""}
-                  onChange={(e) => {
-                    const voice = voices.find((v) => v.name === e.target.value);
-                    setSelectedVoice(voice);
-                  }}
-                >
-                  {voices.map((voice) => (
-                    <MenuItem key={voice.name} value={voice.name}>
-                      {voice.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-              <div style={{ marginLeft: "52px" }}>
-                <IconButton
-                  onClick={handleSpeakText}
-                  className={styles.speakButton}
-                >
-                  <KeyboardVoiceIcon />
-                </IconButton>
-              </div>
-            </div>
-          )}
-          <div className={`${styles.imageWithTextContainer} ${animationClass}`}>
-            <div className={styles.textOverlay}>{text}</div>
-            <img
-              src={image}
-              alt="content"
-              className={styles.imageWithTextImage}
-            />
-          </div>
-        </>
-      );
-    } else if (image) {
-      return (
-        <div className={`${styles.imageContainer} ${animationClass}`}>
-          <img src={image} alt="content" className={styles.image} />
-        </div>
-      );
-    } else if (text) {
-      return (
-        <div className={`${styles.textContent} ${animationClass}`}>
-          {speechSupported && (
-            <>
-              <FormControl fullWidth className={styles.voiceSelect}>
-                <InputLabel>Voice</InputLabel>
-                <Select
-                  value={selectedVoice ? selectedVoice.name : ""}
-                  onChange={(e) => {
-                    const voice = voices.find((v) => v.name === e.target.value);
-                    setSelectedVoice(voice);
-                  }}
-                >
-                  {voices.map((voice) => (
-                    <MenuItem key={voice.name} value={voice.name}>
-                      {voice.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-              <div className={styles.textContentText}>{text}</div>
-              <div style={{ marginLeft: "52px" }}>
-                <IconButton
-                  onClick={handleSpeakText}
-                  className={styles.speakButton}
-                >
-                  <KeyboardVoiceIcon />
-                </IconButton>
-              </div>
-            </>
-          )}
-        </div>
-      );
-    }
-    return null;
-  };
-
-  const handleSpeakText = () => {
-    const { text } = videos[currentIndex];
-    if (text && speechSupported) {
-      try {
-        const chunkSize = 500;
-        let startIndex = 0;
-        const speakNextChunk = () => {
-          if (startIndex >= text.length) return;
-
-          const endIndex = Math.min(startIndex + chunkSize, text.length);
-          const chunk = text.substring(startIndex, endIndex);
-          const utterance = new SpeechSynthesisUtterance(chunk);
-
-          if (selectedVoice) {
-            utterance.voice = selectedVoice;
-          }
-
-          utterance.onstart = () => {
-            console.log("SpeechSynthesisUtterance.onstart");
-          };
-          utterance.onend = () => {
-            console.log("SpeechSynthesisUtterance.onend");
-            startIndex = endIndex;
-            speakNextChunk();
-          };
-          utterance.onerror = (event) => {
-            console.error("SpeechSynthesisUtterance.onerror", event);
-          };
-
-          console.log("Before speaking text chunk:", chunk);
-          window.speechSynthesis.speak(utterance);
-          console.log("Speak method called");
-        };
-
-        speakNextChunk();
-      } catch (error) {
-        console.error("Error speaking text:", error);
-      }
-    } else {
-      console.error("No text found or speech synthesis is not supported.");
-    }
-  };
-
-  return (
-    <div className={styles.container}>
-      <div className={styles.header}>Video Page</div>
-      {renderContent()}
-      {videos[currentIndex].content && (
-        <div className={styles.contentContainer}>
-          {videos[currentIndex].content}
-        </div>
-      )}
-      {videos[currentIndex].duration && (
-        <>
-          <div
-            className={styles.progressBar}
-            onClick={handleProgressBarClick}
-            role="button"
-            aria-label="Progress bar"
-          >
-            <div
-              className={styles.progressBarFill}
-              style={{
-                width: `${(progress / videos[currentIndex].duration) * 100}%`,
+    switch (type) {
+      case "video":
+        return (
+          <Box className={`${styles.videoContainer} ${contentClasses}`}>
+            <ReactPlayer
+              url={video}
+              playing={isPlaying}
+              className={styles.videoPlayer}
+              ref={playerRef}
+              onProgress={({ playedSeconds }) => {
+                if (isPlaying) setProgress(playedSeconds);
               }}
             />
-          </div>
-          <div className={styles.controls}>
-            <div>
-              <Button onClick={handlePrevious} disabled={currentIndex === 0}>
-                <ChevronLeftIcon />
-              </Button>
-              <Button onClick={handlePlayPause}>
-                {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-              </Button>
-              <Button
-                onClick={handleNext}
-                disabled={currentIndex === videos.length - 1}
-              >
-                <ChevronRightIcon />
-              </Button>
-            </div>
-            <span className={styles.duration}>
-              {formatDuration(progress)} /{" "}
-              {formatDuration(videos[currentIndex].duration)}
-            </span>
-          </div>
-        </>
-      )}
-    </div>
+          </Box>
+        );
+      case "text-image":
+        return (
+          <Box className={`${styles.textImageContent} ${contentClasses}`}>
+            <Box className={`${styles.textOverlay} ${contentClasses}`}>
+              {text}
+              {speechSupported && (
+                <Box className={styles.voiceControls}>
+                  <FormControl className={styles.voiceSelect}>
+                    <InputLabel>Voice</InputLabel>
+                    <Select
+                      value={selectedVoice ? selectedVoice.name : ""}
+                      onChange={(e) => {
+                        const voice = voices.find(
+                          (v) => v.name === e.target.value
+                        );
+                        setSelectedVoice(voice);
+                      }}
+                    >
+                      {voices.map((voice) => (
+                        <MenuItem key={voice.name} value={voice.name}>
+                          {voice.name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  <IconButton
+                    className={styles.speakButton}
+                    onClick={handleSpeakText}
+                  >
+                    <KeyboardVoiceIcon />
+                  </IconButton>
+                </Box>
+              )}
+            </Box>
+            {image && <img src={image} alt="content" />}
+          </Box>
+        );
+      case "image":
+        return (
+          <Box className={`${styles.videoContainer} ${contentClasses}`}>
+            <img src={image} alt="content" />
+          </Box>
+        );
+      case "text":
+        return (
+          <Box className={`${styles.textContent} ${contentClasses}`}>
+            {speechSupported && (
+              <Box>
+                <Typography variant="body1">{text}</Typography>
+                <Box className={styles.voiceControls}>
+                  <FormControl className={styles.voiceSelect}>
+                    <InputLabel>Voice</InputLabel>
+                    <Select
+                      value={selectedVoice ? selectedVoice.name : ""}
+                      onChange={(e) => {
+                        const voice = voices.find(
+                          (v) => v.name === e.target.value
+                        );
+                        setSelectedVoice(voice);
+                      }}
+                    >
+                      {voices.map((voice) => (
+                        <MenuItem key={voice.name} value={voice.name}>
+                          {voice.name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  <IconButton
+                    className={styles.speakButton}
+                    onClick={handleSpeakText}
+                  >
+                    <KeyboardVoiceIcon />
+                  </IconButton>
+                </Box>
+              </Box>
+            )}
+          </Box>
+        );
+      default:
+        return null;
+    }
+  }, [
+    currentIndex,
+    transitioning,
+    isPlaying,
+    speechSupported,
+    voices,
+    selectedVoice,
+  ]);
+
+  const handleSpeakText = useCallback(() => {
+    if (speechSupported) {
+      cancelSpeech();
+
+      const text = videos[currentIndex].text;
+      const chunkSize = 500;
+      let start = 0;
+
+      const speakNextChunk = () => {
+        if (start >= text.length) return;
+
+        const chunk = text.slice(start, start + chunkSize);
+        const utterance = new SpeechSynthesisUtterance(chunk);
+        if (selectedVoice) utterance.voice = selectedVoice;
+
+        utterance.onend = () => {
+          start += chunkSize;
+          speakNextChunk();
+        };
+
+        window.speechSynthesis.speak(utterance);
+      };
+
+      speakNextChunk();
+    }
+  }, [currentIndex, selectedVoice, speechSupported]);
+
+  const cancelSpeech = useCallback(() => {
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+    }
+  }, []);
+
+  return (
+    <Box className={styles.container}>
+      <Box sx={{ height: "652px", backgroundColor: "black", color: "#fff" }}>
+        {renderContent()}
+      </Box>
+      <Box className={styles.containerContent}>
+        {videos[currentIndex].content}
+      </Box>
+      <Slider
+        className={styles.progressSlider}
+        value={progress}
+        min={0}
+        max={videos[currentIndex].duration}
+        onChange={handleProgressChange}
+        disabled={!isPlaying}
+      />
+      <Box className={styles.handlerWrapper}>
+        <Box className={styles.controlPanel}>
+          <IconButton onClick={handlePrevious} className={styles.prevButton}>
+            <ChevronLeftIcon />
+          </IconButton>
+          <IconButton onClick={handlePlayPause}>
+            {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+          </IconButton>
+          <IconButton onClick={handleNext} className={styles.nextButton}>
+            <ChevronRightIcon />
+          </IconButton>
+        </Box>
+        <Typography className={styles.durationText}>
+          {formatDuration(progress)} /{" "}
+          {formatDuration(videos[currentIndex].duration)}
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 
