@@ -48,7 +48,7 @@ const videos = [
     image:
       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5tBCXngoqUVlR4bwi619gquT3UtCHBSffOQ2EM5rWr4Zh3Ht9XoCqMgnrN7FC2FzupYHuj3UhIhf_oz0rglhGt0UcFzcVgJV0Hg6ANOYWqAt0ubOc1AGJ7AXJqQ5p8cADuwvw_fYFmd-J/s1600/learning-1959541_1920.jpg",
     text: "Learn from here",
-    content: "It's images Learning images",
+    content: "It's Learning images",
     duration: 5,
     type: "text-image",
   },
@@ -82,7 +82,7 @@ const videos = [
     text: "It is a 3rd image",
     image:
       "https://opensource.com/sites/default/files/lead-images/computer_desk_home_laptop_browser.png",
-    content: "It's 3rd image",
+    content: "It's third image",
     duration: 10,
     type: "image",
   },
@@ -90,7 +90,7 @@ const videos = [
     video: "",
     text: "Let start from here second slide",
     image: "",
-    content: "It's 3rd text",
+    content: "It's third text",
     duration: 8,
     type: "text",
   },
@@ -107,6 +107,7 @@ const VideoPage = () => {
   const [selectedVoice, setSelectedVoice] = useState(null);
   const [transitioning, setTransitioning] = useState(false);
   const playerRef = useRef(null);
+  const progressTimerRef = useRef(null);
 
   // Load available voices
   useEffect(() => {
@@ -173,7 +174,8 @@ const VideoPage = () => {
       cancelSpeech();
       if (
         videos[currentIndex].type === "text" ||
-        videos[currentIndex].type === "text-image"
+        videos[currentIndex].type === "text-image" ||
+        videos[currentIndex].type === "image"
       ) {
         handleSpeakText();
       }
@@ -189,6 +191,22 @@ const VideoPage = () => {
       return () => clearTimeout(timer);
     }
   }, [transitioning]);
+
+  useEffect(() => {
+    // Reset progress when video changes
+    setProgress(0);
+    // setIsPlaying(true);
+  }, [currentIndex]);
+
+  // Cleanup on component unmount or page refresh
+  useEffect(() => {
+    console.log(progressTimerRef, "progressTimer");
+    return () => {
+      cancelSpeech();
+      setIsPlaying(false);
+      clearInterval(progressTimerRef.current);
+    };
+  }, []);
 
   const handlePlayPause = () => setIsPlaying((prev) => !prev);
 
@@ -347,7 +365,7 @@ const VideoPage = () => {
     if (speechSupported) {
       cancelSpeech();
 
-      const text = videos[currentIndex].text;
+      const text = videos[currentIndex].content;
       const chunkSize = 500;
       let start = 0;
 
@@ -377,8 +395,15 @@ const VideoPage = () => {
   }, []);
 
   return (
-    <Box className={styles.container}>
-      <Box sx={{ height: "652px", backgroundColor: "black", color: "#fff" }}>
+    <Box className={styles.container} sm={12} md={8}>
+      <Box
+        sx={{
+          height: "652px",
+          backgroundColor: "black",
+          color: "#fff",
+          borderRadius: "5px",
+        }}
+      >
         {renderContent()}
       </Box>
       <Box className={styles.containerContent}>
