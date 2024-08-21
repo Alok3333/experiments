@@ -14,6 +14,7 @@ import VideoPages from "./VideoPage/VideoPages";
 import CharacterizationOfDigitalLogicPart4 from "./CharacterizationOfDigitalLogic/CharacterizationOfDigitalLogicPart4";
 import Resistor1 from "./CharacterizationOfDigitalLogic/Resistor1";
 import TextToSpeech from "./VideoPage/TextToSpeech";
+import LineChart from "./CharacterizationOfDigitalLogic/ChatLineGraph";
 
 function App() {
   return (
@@ -30,10 +31,11 @@ function App() {
       <SnackbarProvider>
         {/* <CharacterizationOfDigitalLogic /> */}
         {/* <DigitalLogicFamiliesPart3 /> */}
-        {/* <CharacterizationOfDigitalLogicPart4 /> */}
+        <CharacterizationOfDigitalLogicPart4 />
         {/* <Resistor1/> */}
+        {/* <LineChart/> */}
       </SnackbarProvider>
-      <VideoPage />
+      {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
       {/* <VideoPages/> */}
     </div>

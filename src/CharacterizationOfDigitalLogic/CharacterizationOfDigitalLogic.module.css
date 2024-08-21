@@ -392,14 +392,14 @@
 }
 
 /* css for 6th arrow */
-.rotate11 {
+.rotate111 {
     background: red;
     transform: rotate(14deg);
     top: 36px;
     right: 45px;
 }
 
-.rotate12 {
+.rotate112 {
     background: green;
     transform: rotate(157deg);
     top: 30px;
@@ -569,4 +569,20 @@
     height: auto;
     cursor: pointer;
     transform: translateX(50px);
+}
+
+/* css for chat line card wrapper */
+.cardWrapperChatLine {
+    position: relative;
+    margin: auto;
+    display: flex;
+    width: 750px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-color: rgba(246, 247, 248, 0.5);
+    border: 1px solid rgb(232, 234, 238);
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
 }

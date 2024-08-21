@@ -65,7 +65,7 @@ function CharacterizationOfDigitalLogic() {
   const [isRotateArrowFive, setIsRotateArrowFive] = useState(5);
   const [isRotateArrowSeven, setIsRotateArrowSeven] = useState(7);
   const [isRotateArrowNine, setIsRotateArrowNine] = useState(9);
-  const [isRotateArrowEleven, setIsRotateArrowEleven] = useState(11);
+  const [isRotateArrowEleven, setIsRotateArrowEleven] = useState(111);
 
   // This state for updating arrow
   const [isRotating, setIsRotating] = useState(true);
@@ -379,7 +379,7 @@ function CharacterizationOfDigitalLogic() {
               <Button onClick={() => setShowFigureImage(!showFigureImage)}>
                 Characteristic Plot
               </Button>
-              {!showFigureImage && (
+              {showFigureImage && (
                 <img
                   src="https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-12-5125-nand-2figure.png"
                   className={styles.backgroundFigureImage}
