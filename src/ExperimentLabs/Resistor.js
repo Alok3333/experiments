@@ -13,12 +13,12 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import img1 from "../assets/img1.png";
-import img2 from "../assets/img2.png";
-import img3 from "../assets/img3.png";
-import img4 from "../assets/img4.png";
-import img5 from "../assets/img5.png";
-import img6 from "../assets/img6.png";
+import img1 from "../assets/img11.png";
+import img2 from "../assets/img12.png";
+import img3 from "../assets/img13.png";
+import img4 from "../assets/img14.png";
+import img5 from "../assets/img15.png";
+import img6 from "../assets/img16.png";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

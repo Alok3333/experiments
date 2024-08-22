@@ -15,6 +15,7 @@ import CharacterizationOfDigitalLogicPart4 from "./CharacterizationOfDigitalLogi
 import Resistor1 from "./CharacterizationOfDigitalLogic/Resistor1";
 import TextToSpeech from "./VideoPage/TextToSpeech";
 import LineChart from "./CharacterizationOfDigitalLogic/ChatLineGraph";
+import ANDGate from "./CharacterizationOfDigitalLogic/ANDGate";
 
 function App() {
   return (
@@ -31,9 +32,10 @@ function App() {
       <SnackbarProvider>
         {/* <CharacterizationOfDigitalLogic /> */}
         {/* <DigitalLogicFamiliesPart3 /> */}
-        <CharacterizationOfDigitalLogicPart4 />
+        {/* <CharacterizationOfDigitalLogicPart4 /> */}
         {/* <Resistor1/> */}
         {/* <LineChart/> */}
+        <ANDGate />
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
