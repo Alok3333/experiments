@@ -603,11 +603,46 @@
     overflow: hidden;
 }
 
+.titleAndGate {
+    position: absolute;
+    z-index: 2;
+    background-color: #D6E6F2;
+    width: 100%;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: #F7FBFC; */
+}
+
+.titleAndGate::before {
+    content: 'AND GATE';
+    background-color: #e4d049;
+    color: #000;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 4px;
+    margin-right: 5px;
+    transition: color 0.3s ease;
+    width: 97px;
+}
+
 .backgroundImageANDGate {
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: 1;
+}
+
+.instrauctionwrapper {
+    transition: padding 0.3s ease, transform 0.3s ease, margin 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instrauctionwrapper:hover {
+    padding: 20px;
+    margin: 20px;
+    transform: scale(1.1);
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 
 .btnOffANDgate1 {
@@ -620,6 +655,7 @@
     right: 31%;
     top: 12%;
     cursor: pointer;
+    transition: 0.5s ease;
 }
 
 .btnOffANDgate2 {
@@ -644,4 +680,37 @@
     left: 21%;
     top: 67.7%;
     cursor: pointer;
+}
+
+.backgroundImageANDGateBattery {
+    position: absolute;
+    z-index: 2;
+    top: 157px;
+    right: 0px;
+    transition: transform 0.5s ease;
+}
+
+.backgroundImageANDGateLight {
+    width: 66px;
+    height: 90px;
+    position: absolute;
+    z-index: 2;
+    bottom: 185px;
+    right: 254px;
+}
+
+/* Add transition for button styles */
+.btnOffANDgate1,
+.btnOffANDgate2,
+.btnOffANDgate3 {
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.btnOffANDgate1:hover,
+.btnOffANDgate2:hover,
+.btnOffANDgate3:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
