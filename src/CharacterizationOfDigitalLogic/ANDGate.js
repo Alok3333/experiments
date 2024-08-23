@@ -99,6 +99,12 @@ function ANDGate() {
                   are OFF and glows only if both the switches are ON.
                 </li>
               </ol>
+              <h3>SPECIFICATIONS</h3>
+              <ol>
+                <li>Battery = 5V</li>
+                <li>Resistance R1 & R2 =5 kohm, R3 & R4= 10 Kohm</li>
+                <li>Transistors Q1 & Q2 = NPN 2N3904</li>
+              </ol>
             </Box>
           </Box>
           <div className={styles.cardWrapperFirstANDGate}>
