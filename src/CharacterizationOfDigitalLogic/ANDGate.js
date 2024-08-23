@@ -104,7 +104,10 @@ function ANDGate() {
           <div className={styles.cardWrapperFirstANDGate}>
             <div className={styles.titleAndGate}>
               <marquee>
-                <h3>Experiment to perform AND gate on kit</h3>
+                <h3>
+                  Experiment to perform AND gate on kit. AND gate using
+                  Resistor-Transistor Logic(RTL)
+                </h3>
               </marquee>
             </div>
             {/* Displaying the image based on button states */}
