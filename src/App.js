@@ -19,6 +19,7 @@ import ANDGate from "./pages/ANDGate";
 import ANDGate2 from "./pages/ANDGate2";
 import BoxShadow from "./cssImplement/BoxShadow";
 import ORGate from "./pages/ORGate";
+import ORGate2 from "./pages/ORGate2";
 
 function App() {
   return (
@@ -40,7 +41,8 @@ function App() {
         {/* <LineChart/> */}
         {/* <ANDGate /> */}
         {/* <ANDGate2/> */}
-        <ORGate />
+        {/* <ORGate /> */}
+        <ORGate2 />
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
