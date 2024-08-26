@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import { Box, Grid } from "@mui/material";
 import styles from "../virtuallabscss/ORGate.module.css";
 import { useSnackbar } from "notistack";
-import img1 from "../assets/or_gate1.png";
-import img2 from "../assets/or_gate2.png";
-import img3 from "../assets/or_gate3.png";
-import img4 from "../assets/or_gate4.png";
 
 const btnRed =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4024-switchOff.png";
@@ -13,20 +9,17 @@ const btnRed =
 const btnGreen =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4112-switchOn.png";
 
-// const img1 =
-//   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3530-img1.png";
+const img1 =
+  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-26-2358-or_gate1.png";
 
-// const img2 =
-//   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3612-img2.png";
+const img2 =
+  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-26-2516-or_gate2.png";
 
-// const img3 =
-//   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3640-img3.png";
+const img3 =
+  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-26-2634-or_gate3.png";
 
-// const img4 =
-//   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3724-img4.png";
-
-const img5 =
-  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3810-img5.png";
+const img4 =
+  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-26-2659-or_gate4.png";
 
 const batteryimg =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3855-battery-preview.png";
@@ -149,15 +142,15 @@ function ORGate() {
               </ol>
             </Box>
           </Box>
-          <div className={styles.cardWrapperFirstORGate}>
-            <div className={styles.titleOrGate}>
+          <Box className={styles.cardWrapperFirstORGate}>
+            <Box className={styles.titleOrGate}>
               <marquee>
                 <h3>
                   Experiment to perform OR gate on kit. OR logic implementation
                   using DRL(Diode Resistance Logic).
                 </h3>
               </marquee>
-            </div>
+            </Box>
             {/* Displaying the image based on button states */}
             <img
               src={getImage()}
@@ -206,7 +199,7 @@ function ORGate() {
               alt="button3"
               onClick={() => handleButtonClick(setBtnClick3, btnClick3)}
             /> */}
-          </div>
+          </Box>
         </Grid>
       </Grid>
     </>

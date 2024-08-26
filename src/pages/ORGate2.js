@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
-import orgateimg from "../assets/or_gate_part2.png";
 
 const MAX_VAL = 1;
 const MIN_VAL = 0;
@@ -135,7 +134,7 @@ function ORGate2() {
             </Box>
             {/* Displaying the image based on button states */}
             <img
-              src={orgateimg}
+              src="https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-26-2221-or_gate_part2.png"
               alt="AND logic gate 2"
               className={styles.backgroundImageORGate}
             />
