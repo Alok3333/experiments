@@ -15,9 +15,10 @@ import CharacterizationOfDigitalLogicPart4 from "./CharacterizationOfDigitalLogi
 import Resistor1 from "./CharacterizationOfDigitalLogic/Resistor1";
 import TextToSpeech from "./VideoPage/TextToSpeech";
 import LineChart from "./CharacterizationOfDigitalLogic/ChatLineGraph";
-import ANDGate from "./CharacterizationOfDigitalLogic/ANDGate";
-import ANDGate2 from "./CharacterizationOfDigitalLogic/ANDGate2";
+import ANDGate from "./pages/ANDGate";
+import ANDGate2 from "./pages/ANDGate2";
 import BoxShadow from "./cssImplement/BoxShadow";
+import ORGate from "./pages/ORGate";
 
 function App() {
   return (
@@ -39,11 +40,12 @@ function App() {
         {/* <LineChart/> */}
         {/* <ANDGate /> */}
         {/* <ANDGate2/> */}
+        <ORGate />
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
       {/* <VideoPages/> */}
-      <BoxShadow />
+      {/* <BoxShadow /> */}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styles from "./CharacterizationOfDigitalLogic.module.css";
 import { Box, Grid } from "@mui/material";
+import styles from "../virtuallabscss/ANDGate.module.css";
 
 const btnRed =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4024-switchOff.png";
@@ -32,7 +32,7 @@ const lightoff =
 const lighton =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-4010-bulbon.png";
 
-function ANDGate() {
+function ORGate() {
   // State for button clicks
   const [btnClick1, setBtnClick1] = useState(false);
   const [btnClick2, setBtnClick2] = useState(false);
@@ -86,24 +86,13 @@ function ANDGate() {
             <Box className={styles.instrauctionwrapper}>
               <h3>INSTRUCTIONS</h3>
               <ol>
-                <li>Connect the battery first.</li>
+                <li>Connect the battery to the circuit.</li>
+                <li>Press the switches 1 and 2 for inputs "A" and "B".</li>
                 <li>
-                  Press the switch 1 for the battery to be connected to the
-                  circuit.
+                  The LED glows if any one or both the switches are{" "}
+                  <span style={{textDecoration: "underline", color: "green"}}>ON</span> and it doesn't glow if both the swicthes are{" "}
+                  <span>OFF</span>.
                 </li>
-                <li>
-                  Press the switch 2 for input A and swicth 3 for input B.
-                </li>
-                <li>
-                  The LED does not glow if any one or both the switches(2 and 3)
-                  are OFF and glows only if both the switches are ON.
-                </li>
-              </ol>
-              <h3>SPECIFICATIONS</h3>
-              <ol>
-                <li>Battery = 5V</li>
-                <li>Resistance R1 & R2 =5 kohm, R3 & R4= 10 Kohm</li>
-                <li>Transistors Q1 & Q2 = NPN 2N3904</li>
               </ol>
             </Box>
           </Box>
@@ -169,4 +158,4 @@ function ANDGate() {
   );
 }
 
-export default ANDGate;
+export default ORGate;

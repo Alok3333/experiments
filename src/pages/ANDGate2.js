@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./CharacterizationOfDigitalLogic.module.css";
+import styles from "../virtuallabscss/ANDGate.module.css";
 import {
   Box,
   Button,
