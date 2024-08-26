@@ -17,6 +17,7 @@ import TextToSpeech from "./VideoPage/TextToSpeech";
 import LineChart from "./CharacterizationOfDigitalLogic/ChatLineGraph";
 import ANDGate from "./CharacterizationOfDigitalLogic/ANDGate";
 import ANDGate2 from "./CharacterizationOfDigitalLogic/ANDGate2";
+import BoxShadow from "./cssImplement/BoxShadow";
 
 function App() {
   return (
@@ -37,11 +38,12 @@ function App() {
         {/* <Resistor1/> */}
         {/* <LineChart/> */}
         {/* <ANDGate /> */}
-        <ANDGate2/>
+        {/* <ANDGate2/> */}
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
       {/* <VideoPages/> */}
+      <BoxShadow />
     </div>
   );
 }
