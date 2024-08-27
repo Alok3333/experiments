@@ -20,6 +20,8 @@ import ANDGate2 from "./pages/ANDGate2";
 import BoxShadow from "./cssImplement/BoxShadow";
 import ORGate from "./pages/ORGate";
 import ORGate2 from "./pages/ORGate2";
+import NOTGate from "./pages/NOTGate";
+import NOTGate2 from "./pages/NOTGate2";
 
 function App() {
   return (
@@ -42,7 +44,9 @@ function App() {
         {/* <ANDGate /> */}
         {/* <ANDGate2/> */}
         {/* <ORGate /> */}
-        <ORGate2 />
+        {/* <ORGate2 /> */}
+        <NOTGate />
+        {/* <NOTGate2 /> */}
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
