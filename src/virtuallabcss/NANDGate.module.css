@@ -1,6 +1,6 @@
 /* AND Gate css code start here */
 
-.cardWrapperFirstANDGate {
+.cardWrapperFirstNANDGate {
     position: relative;
     margin: auto;
     display: flex;
@@ -14,7 +14,7 @@
     overflow: hidden;
 }
 
-.titleAndGate {
+.titleNandGate {
     position: absolute;
     z-index: 2;
     background-color: #D6E6F2;
@@ -26,8 +26,8 @@
     /* color: #F7FBFC; */
 }
 
-.titleAndGate::before {
-    content: 'AND GATE';
+.titleNandGate::before {
+    content: 'NAND GATE';
     background-color: #e4d049;
     color: #000;
     font-weight: 700;
@@ -38,7 +38,7 @@
     width: 97px;
 }
 
-.backgroundImageANDGate {
+.backgroundImageNANDGate {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -56,72 +56,72 @@
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 
-.btnOffANDgate1 {
+.btnOffNANDgate1 {
     width: 50px;
     height: 46px;
     position: absolute;
     z-index: 2;
     margin: 0;
     padding: 0;
-    right: 31%;
-    top: 12%;
+    right: 32.5%;
+    top: 9%;
     cursor: pointer;
     transition: 0.5s ease;
 }
 
-.btnOffANDgate2 {
+.btnOffNANDgate2 {
     width: 50px;
     height: 46px;
     position: absolute;
     z-index: 2;
     margin: 0;
     padding: 0;
-    left: 21%;
-    top: 47%;
+    left: 17%;
+    top: 45.4%;
     cursor: pointer;
 }
 
-.btnOffANDgate3 {
+.btnOffNANDgate3 {
     width: 50px;
     height: 46px;
     position: absolute;
     z-index: 2;
     margin: 0;
     padding: 0;
-    left: 21%;
-    top: 67.7%;
+    left: 17%;
+    top: 68.7%;
     cursor: pointer;
 }
 
-.backgroundImageANDGateBattery {
+.backgroundImageNANDGateBattery {
     position: absolute;
     z-index: 2;
-    top: 157px;
-    right: 0px;
+    top: 152px;
+    right: 6px;
     transition: transform 0.5s ease;
     cursor: pointer;
 }
 
-.backgroundImageANDGateLight {
+.backgroundImageNANDGateLight {
     width: 66px;
     height: 90px;
     position: absolute;
     z-index: 2;
-    bottom: 185px;
-    right: 254px;
+    bottom: 204px;
+    right: 421px;
 }
 
 /* Add transition for button styles */
-.btnOffANDgate1,
-.btnOffANDgate2,
-.btnOffANDgate3 {
+.btnOffNANDgate1,
+.btnOffNANDgate2,
+.btnOffNANDgate3 {
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
-.btnOffANDgate1:hover,
-.btnOffANDgate2:hover,
-.btnOffANDgate3:hover {
+.btnOffNANDgate1:hover,
+.btnOffNANDgate2:hover,
+.btnOffNANDgate3:hover {
     background-color: #f0f0f0;
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
