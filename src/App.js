@@ -50,8 +50,8 @@ function App() {
         {/* <ORGate2 /> */}
         {/* <NOTGate /> */}
         {/* <NOTGate2 /> */}
-        {/* <NANDGate/> */}
-        <NANDGate2/>
+        <NANDGate/>
+        {/* <NANDGate2/> */}
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}

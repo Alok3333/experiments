@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../virtuallabcss/NANDGate.module.css";
 import { Box, Grid } from "@mui/material";
+import { useSnackbar } from "notistack";
 
 const btnRed =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4024-switchOff.png";
@@ -37,6 +38,7 @@ function NANDGate() {
   const [btnClick1, setBtnClick1] = useState(false);
   const [btnClick2, setBtnClick2] = useState(false);
   const [btnClick3, setBtnClick3] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   // State for battery image position
   const [shiftBattery, setShiftBattery] = useState(false);
@@ -55,7 +57,12 @@ function NANDGate() {
   // Checking if all button on then trun on the light
   const getImageLight = () => {
     if (shiftBattery && btnClick1 && btnClick2 && btnClick3) return lightoff;
-    if (shiftBattery && (btnClick1 || btnClick2 || btnClick1)) return lighton;
+    if (
+      (shiftBattery && btnClick1) ||
+      (shiftBattery && btnClick1 && btnClick2) ||
+      (shiftBattery && btnClick1 && btnClick3)
+    )
+      return lighton;
     return lightoff;
   };
 
@@ -63,11 +70,27 @@ function NANDGate() {
     // console.log(setter(!value), "setter")
     setter(!value);
     if (shiftBattery) {
-      if ((!btnClick1 && btnClick2) || (!btnClick1 && btnClick3)) {
-        alert("First turn on switch 1");
+      if ((!btnClick1 && !btnClick2) || (!btnClick1 && btnClick3)) {
+        enqueueSnackbar("Please trun off switch. you should First turn on switch 1", {
+          autoHideDuration: 2000,
+          variant: "error",
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "center",
+          },
+          preventDuplicate: true,
+        });
       }
     } else {
-      alert("Connect the battery");
+      enqueueSnackbar("Connect the battery", {
+        autoHideDuration: 2000,
+        variant: "error",
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+        preventDuplicate: true,
+      });
     }
   };
 
