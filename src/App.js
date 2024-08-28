@@ -50,14 +50,14 @@ function App() {
         {/* <ORGate2 /> */}
         {/* <NOTGate /> */}
         {/* <NOTGate2 /> */}
-        <NANDGate/>
+        {/* <NANDGate/> */}
         {/* <NANDGate2/> */}
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
       {/* <VideoPages/> */}
       {/* <BoxShadow /> */}
-      {/* <DragDrop/> */}
+      <DragDrop/>
     </div>
   );
 }
