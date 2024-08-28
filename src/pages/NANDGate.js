@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import styles from "../virtuallabcss/NANDGate.module.css";
 import { Box, Grid } from "@mui/material";
-// import img1 from "../assets/nand1.png";
-// import img2 from "../assets/nand2.png";
-// import img3 from "../assets/nand3.png";
-// import img4 from "../assets/nand4.png";
 
 const btnRed =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4024-switchOff.png";
@@ -58,7 +54,7 @@ function NANDGate() {
 
   // Checking if all button on then trun on the light
   const getImageLight = () => {
-    if(shiftBattery && btnClick1 && btnClick2 && btnClick3) return lightoff;
+    if (shiftBattery && btnClick1 && btnClick2 && btnClick3) return lightoff;
     if (shiftBattery && (btnClick1 || btnClick2 || btnClick1)) return lighton;
     return lightoff;
   };
@@ -98,11 +94,13 @@ function NANDGate() {
                   Press the switch 1 for the battery to be connected to the
                   circuit.
                 </li>
-                <li>Press the switch 2 for input A.</li>
+                <li>
+                  Press the switch 2 for input A and switch 3 for input B.
+                </li>
                 <li>
                   The{" "}
                   <span style={{ color: "red", fontWeight: "600" }}>LED</span>{" "}
-                  glows if the switch 2 is{" "}
+                  glows if any one or both the switches (2 and 3) are{" "}
                   <span
                     style={{
                       textDecoration: "underline",
@@ -112,7 +110,7 @@ function NANDGate() {
                   >
                     OFF
                   </span>{" "}
-                  and doesn't glow if the swicth 2 is{" "}
+                  and does not glow if both the switches (2 and 3) are{" "}
                   <span
                     style={{
                       textDecoration: "underline",
@@ -130,8 +128,8 @@ function NANDGate() {
               </h3>
               <ol>
                 <li>Battery = 5V</li>
-                <li>Resistor R1 = 1 kohm, R2= 10 Kohm</li>
-                <li>Transistor = NPN 2N3904</li>
+                <li>Resistor R3 = 1 Kohm & R1 & R2 = 10 Kohm</li>
+                <li>Transistors Q1 & Q2 = NPN 2N3904</li>
               </ol>
             </Box>
           </Box>

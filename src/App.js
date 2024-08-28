@@ -23,6 +23,8 @@ import ORGate2 from "./pages/ORGate2";
 import NOTGate from "./pages/NOTGate";
 import NOTGate2 from "./pages/NOTGate2";
 import NANDGate from "./pages/NANDGate";
+import DragDrop from "./dragdrop/DragDrop";
+import NANDGate2 from "./pages/NANDGate2";
 
 function App() {
   return (
@@ -48,12 +50,14 @@ function App() {
         {/* <ORGate2 /> */}
         {/* <NOTGate /> */}
         {/* <NOTGate2 /> */}
-        <NANDGate/>
+        {/* <NANDGate/> */}
+        <NANDGate2/>
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
       {/* <VideoPages/> */}
       {/* <BoxShadow /> */}
+      {/* <DragDrop/> */}
     </div>
   );
 }
