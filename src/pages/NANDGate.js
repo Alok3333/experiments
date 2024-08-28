@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import styles from "../virtuallabcss/ANDGate.module.css";
+import styles from "../virtuallabcss/NANDGate.module.css";
 import { Box, Grid } from "@mui/material";
+import img1 from "../assets/nand1.png";
 
 const btnRed =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4024-switchOff.png";
@@ -8,8 +9,8 @@ const btnRed =
 const btnGreen =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4112-switchOn.png";
 
-const img1 =
-  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3530-img1.png";
+// const img1 =
+//   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3530-img1.png";
 
 const img2 =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3612-img2.png";
@@ -24,7 +25,7 @@ const img5 =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3810-img5.png";
 
 const batteryimg =
-  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3855-battery-preview.png";
+  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-28-3857-new_battery.png";
 
 const lightoff =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3936-bulboff.png";
@@ -32,7 +33,7 @@ const lightoff =
 const lighton =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-4010-bulbon.png";
 
-function ANDGate() {
+function NANDGate() {
   // State for button clicks
   const [btnClick1, setBtnClick1] = useState(false);
   const [btnClick2, setBtnClick2] = useState(false);
@@ -82,28 +83,51 @@ function ANDGate() {
             Verification and interpretation of truth table for AND, OR, NOT,
             NAND, NOR, Ex-OR, Ex-NOR gates.
           </h3>
-          <Box className={styles.cardWrapperFirstANDGate}>
+          <Box className={styles.cardWrapperFirstNOTGate}>
             <Box className={styles.instrauctionwrapper}>
-              <h3>INSTRUCTIONS</h3>
+              <h3>
+                <span className={styles.unText}>INSTRUCTIONS</span>
+              </h3>
               <ol>
                 <li>Connect the battery first.</li>
                 <li>
                   Press the switch 1 for the battery to be connected to the
                   circuit.
                 </li>
+                <li>Press the switch 2 for input A.</li>
                 <li>
-                  Press the switch 2 for input A and swicth 3 for input B.
-                </li>
-                <li>
-                  The LED does not glow if any one or both the switches(2 and 3)
-                  are OFF and glows only if both the switches are ON.
+                  The{" "}
+                  <span style={{ color: "red", fontWeight: "600" }}>LED</span>{" "}
+                  glows if the switch 2 is{" "}
+                  <span
+                    style={{
+                      textDecoration: "underline",
+                      color: "red",
+                      fontWeight: "600",
+                    }}
+                  >
+                    OFF
+                  </span>{" "}
+                  and doesn't glow if the swicth 2 is{" "}
+                  <span
+                    style={{
+                      textDecoration: "underline",
+                      color: "green",
+                      fontWeight: "600",
+                    }}
+                  >
+                    ON
+                  </span>
+                  .
                 </li>
               </ol>
-              <h3>SPECIFICATIONS</h3>
+              <h3>
+                <span className={styles.unText}>SPECIFICATIONS</span>
+              </h3>
               <ol>
                 <li>Battery = 5V</li>
-                <li>Resistance R1 & R2 =5 kohm, R3 & R4= 10 Kohm</li>
-                <li>Transistors Q1 & Q2 = NPN 2N3904</li>
+                <li>Resistor R1 = 1 kohm, R2= 10 Kohm</li>
+                <li>Transistor = NPN 2N3904</li>
               </ol>
             </Box>
           </Box>
@@ -169,4 +193,4 @@ function ANDGate() {
   );
 }
 
-export default ANDGate;
+export default NANDGate;

@@ -22,6 +22,7 @@ import ORGate from "./pages/ORGate";
 import ORGate2 from "./pages/ORGate2";
 import NOTGate from "./pages/NOTGate";
 import NOTGate2 from "./pages/NOTGate2";
+import NANDGate from "./pages/NANDGate";
 
 function App() {
   return (
@@ -45,8 +46,9 @@ function App() {
         {/* <ANDGate2/> */}
         {/* <ORGate /> */}
         {/* <ORGate2 /> */}
-        <NOTGate />
+        {/* <NOTGate /> */}
         {/* <NOTGate2 /> */}
+        <NANDGate/>
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}

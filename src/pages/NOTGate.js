@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Grid } from "@mui/material";
-import styles from "../virtuallabscss/NOTGate.module.css";
+import styles from "../virtuallabcss/NOTGate.module.css";
 import { useSnackbar } from "notistack";
 
 const btnRed =

@@ -1,6 +1,6 @@
 /* AND Gate css code start here */
 
-.cardWrapperFirstNOTGate {
+.cardWrapperFirstANDGate {
     position: relative;
     margin: auto;
     display: flex;
@@ -14,13 +14,35 @@
     overflow: hidden;
 }
 
-.wrapper {
-    position: relative;
+.titleAndGate {
+    position: absolute;
+    z-index: 2;
+    background-color: #D6E6F2;
     width: 100%;
-    height: 100%;
+    height: 46px;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* color: #F7FBFC; */
+}
+
+.titleAndGate::before {
+    content: 'AND GATE';
+    background-color: #e4d049;
+    color: #000;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 4px;
+    margin-right: 5px;
+    transition: color 0.3s ease;
+    width: 97px;
+}
+
+.backgroundImageANDGate {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
 }
 
 .instrauctionwrapper {
@@ -34,122 +56,78 @@
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 
-/* underline text css */
-.unText {
-    display: inline-block;
-    position: relative;
-}
-
-.unText:after {
-    content: '';
-    width: 0px;
-    height: 2px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: red;
-    transition: 300ms;
-}
-
-.unText:hover:after {
-    width: 100%;
-}
-
-.unText:not(:hover):after {
-    right: 0;
-    left: auto;
-}
-
-.titleNOTGate {
-    position: absolute;
-    z-index: 2;
-    background-color: #D6E6F2;
-    width: 100%;
-    height: 46px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    /* color: #F7FBFC; */
-}
-
-.titleNOTGate::before {
-    content: 'NOT GATE';
-    background-color: #e4d049;
-    color: #000;
-    font-weight: 700;
-    padding: 5px;
-    border-radius: 4px;
-    margin-right: 5px;
-    transition: color 0.3s ease;
-    width: 97px;
-}
-
-.backgroundImageNOTGate {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-}
-
-.backgroundImageNOTGateBattery {
-    position: absolute;
-    z-index: 2;
-    top: 229px;
-    right: 16px;
-    transition: transform 0.5s ease;
-    cursor: pointer;
-}
-
-.backgroundImageNOTGateLight {
-    width: 69px;
-    height: 103px;
-    position: absolute;
-    z-index: 2;
-    right: 474px;
-    bottom: 219px;
-}
-
-.btnOffNOTgate1 {
+.btnOffANDgate1 {
     width: 50px;
     height: 46px;
     position: absolute;
     z-index: 2;
     margin: 0;
     padding: 0;
-    right: 37%;
-    top: 21.2%;
+    right: 31%;
+    top: 12%;
     cursor: pointer;
     transition: 0.5s ease;
 }
 
-.btnOffNOTgate2 {
+.btnOffANDgate2 {
     width: 50px;
     height: 46px;
     position: absolute;
     z-index: 2;
     margin: 0;
     padding: 0;
-    left: 3.2%;
-    top: 38.5%;
+    left: 21%;
+    top: 47%;
     cursor: pointer;
 }
 
+.btnOffANDgate3 {
+    width: 50px;
+    height: 46px;
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    left: 21%;
+    top: 67.7%;
+    cursor: pointer;
+}
+
+.backgroundImageANDGateBattery {
+    position: absolute;
+    z-index: 2;
+    top: 157px;
+    right: 0px;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+
+.backgroundImageANDGateLight {
+    width: 66px;
+    height: 90px;
+    position: absolute;
+    z-index: 2;
+    bottom: 185px;
+    right: 254px;
+}
+
 /* Add transition for button styles */
-.btnOffNOTgate1,
-.btnOffNOTgate2 {
+.btnOffANDgate1,
+.btnOffANDgate2,
+.btnOffANDgate3 {
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
-.btnOffNOTgate1:hover,
-.btnOffNOTgate2:hover {
+.btnOffANDgate1:hover,
+.btnOffANDgate2:hover,
+.btnOffANDgate3:hover {
     background-color: #f0f0f0;
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ************ ORGate2 css start from here ************ */
+/* ************ ANDGate2 css start from here ************ */
 
 .tablewrapper {
     position: absolute;

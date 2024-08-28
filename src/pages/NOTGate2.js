@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../virtuallabscss/NOTGate.module.css";
+import styles from "../virtuallabcss/NOTGate.module.css";
 import {
   Box,
   Button,
