@@ -26,6 +26,7 @@ import NANDGate from "./pages/NANDGate";
 import DragDrop from "./dragdrop/DragDrop";
 import NANDGate2 from "./pages/NANDGate2";
 import NORGate from "./pages/NORGate";
+import NORGate2 from "./pages/NORGate2";
 
 function App() {
   return (
@@ -53,7 +54,8 @@ function App() {
         {/* <NOTGate2 /> */}
         {/* <NANDGate/> */}
         {/* <NANDGate2/> */}
-        <NORGate />
+        {/* <NORGate /> */}
+        <NORGate2 />
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}

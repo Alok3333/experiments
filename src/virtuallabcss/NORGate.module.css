@@ -156,7 +156,7 @@
 
 /* ************ NANDGate2 css start from here ************ */
 
-.tablewrapper {
+.tablewrappernorgate {
     position: absolute;
     z-index: 2;
     width: 65%;
