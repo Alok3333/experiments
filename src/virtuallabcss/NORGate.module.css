@@ -91,7 +91,7 @@
     margin: 0;
     padding: 0;
     right: 32.5%;
-    top: 9%;
+    top: 8.5%;
     cursor: pointer;
     transition: 0.5s ease;
 }
@@ -104,7 +104,7 @@
     margin: 0;
     padding: 0;
     left: 17%;
-    top: 45.4%;
+    top: 45%;
     cursor: pointer;
 }
 
@@ -116,7 +116,7 @@
     margin: 0;
     padding: 0;
     left: 17%;
-    top: 68.7%;
+    top: 68%;
     cursor: pointer;
 }
 
@@ -124,7 +124,7 @@
     position: absolute;
     z-index: 2;
     top: 152px;
-    right: 6px;
+    right: 10px;
     transition: transform 0.5s ease;
     cursor: pointer;
 }
@@ -134,8 +134,8 @@
     height: 90px;
     position: absolute;
     z-index: 2;
-    bottom: 204px;
-    right: 421px;
+    bottom: 211px;
+    right: 347px;
 }
 
 /* Add transition for button styles */
