@@ -25,6 +25,7 @@ import NOTGate2 from "./pages/NOTGate2";
 import NANDGate from "./pages/NANDGate";
 import DragDrop from "./dragdrop/DragDrop";
 import NANDGate2 from "./pages/NANDGate2";
+import NORGate from "./pages/NORGate";
 
 function App() {
   return (
@@ -52,12 +53,13 @@ function App() {
         {/* <NOTGate2 /> */}
         {/* <NANDGate/> */}
         {/* <NANDGate2/> */}
+        <NORGate />
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
       {/* <VideoPages/> */}
       {/* <BoxShadow /> */}
-      <DragDrop/>
+      {/* <DragDrop/> */}
     </div>
   );
 }
