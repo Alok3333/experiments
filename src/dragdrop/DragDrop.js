@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styles from "../virtuallabcss/NANDGate.module.css";
+import styles from "./DragDrop.module.css";
 import { Box, Grid } from "@mui/material";
 import { useSnackbar } from "notistack";
-import Draggable from "react-draggable"; // Import Draggable
+import Draggable from "react-draggable";
 
 const btnRed =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4024-switchOff.png";
@@ -145,138 +145,14 @@ function NANDGate() {
     <>
       <Grid container spacing={2} direction="column" alignItems="center">
         <Grid item xs={12}>
-          <h3>
-            Verification and interpretation of truth table for AND, OR, NOT,
-            NAND, NOR, Ex-OR, Ex-NOR gates.
-          </h3>
           <Box className={styles.cardWrapperFirstNANDGate}>
-            <Box className={styles.instrauctionwrapper}>
-              <h3>
-                <span className={styles.unText}>INSTRUCTIONS</span>
-              </h3>
-              <ol>
-                <li>Connect the battery first.</li>
-                <li>
-                  Press the switch 1 for the battery to be connected to the
-                  circuit.
-                </li>
-                <li>
-                  Press the switch 2 for input A and switch 3 for input B.
-                </li>
-                <li>
-                  The{" "}
-                  <span style={{ color: "red", fontWeight: "600" }}>LED</span>{" "}
-                  glows if any one or both the switches (2 and 3) are{" "}
-                  <span
-                    style={{
-                      textDecoration: "underline",
-                      color: "red",
-                      fontWeight: "600",
-                    }}
-                  >
-                    OFF
-                  </span>{" "}
-                  and does not glow if both the switches (2 and 3) are{" "}
-                  <span
-                    style={{
-                      textDecoration: "underline",
-                      color: "green",
-                      fontWeight: "600",
-                    }}
-                  >
-                    ON
-                  </span>
-                  .
-                </li>
-              </ol>
-              <h3>
-                <span className={styles.unText}>SPECIFICATIONS</span>
-              </h3>
-              <ol>
-                <li>Battery = 5V</li>
-                <li>Resistor R3 = 1 Kohm & R1 & R2 = 10 Kohm</li>
-                <li>Transistors Q1 & Q2 = NPN 2N3904</li>
-              </ol>
+            <Box className={styles.leftBox}>
+              <Box className={styles.txt1} draggable>left</Box>
+            </Box>
+            <Box className={styles.rightBox}>
+              <Box className={styles.txt2} draggable>right</Box>
             </Box>
           </Box>
-          <div className={styles.cardWrapperFirstNANDGate}>
-            <div className={styles.titleNandGate}>
-              <marquee>
-                <h3>
-                  Experiment to perform NAND gate on kit. NAND gate using
-                  Resistor-Transistor Logic(RTL)
-                </h3>
-              </marquee>
-            </div>
-            {/* Displaying the image based on button states */}
-            <img
-              src={getImage()}
-              alt="AND logic gate"
-              className={styles.backgroundImageNANDGate}
-            />
-
-            {/* Target area for the battery */}
-            <div
-              style={{
-                position: "fixed",
-                top: targetArea.top,
-                right: targetArea.right,
-                width: targetArea.width,
-                height: targetArea.height,
-                border: "2px dashed red",
-                zIndex: 1,
-              }}
-            />
-
-            {/* Battery image with draggable functionality */}
-            <Draggable
-              position={batteryPosition}
-              onDrag={handleDrag}
-              onStop={handleStop}
-              bounds={{
-                left: 0,
-                top: 0,
-                right: window.innerWidth,
-                bottom: window.innerHeight,
-              }} // Adjust bounds if needed
-            >
-              <img
-                src={batteryimg}
-                alt="battery"
-                className={styles.backgroundImageNANDGateBattery}
-                onClick={handleBatteryClick}
-              />
-            </Draggable>
-
-            {/* Light image with turn on & off */}
-            <img
-              src={getImageLight()}
-              alt="lighton&off"
-              className={styles.backgroundImageNANDGateLight}
-            />
-
-            {/* Button images */}
-            <img
-              src={btnClick1 ? btnGreen : btnRed}
-              className={styles.btnOffNANDgate1}
-              alt="button1"
-              onClick={() => handleButtonClick(setBtnClick1, btnClick1)}
-            />
-
-            <img
-              src={btnClick2 ? btnGreen : btnRed}
-              className={styles.btnOffNANDgate2}
-              alt="button2"
-              onClick={() => handleButtonClick(setBtnClick2, btnClick2)}
-            />
-
-            <img
-              src={btnClick3 ? btnGreen : btnRed}
-              className={styles.btnOffNANDgate3}
-              alt="button3"
-              onClick={() => handleButtonClick(setBtnClick3, btnClick3)}
-            />
-          </div>
         </Grid>
       </Grid>
     </>

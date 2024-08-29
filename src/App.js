@@ -55,13 +55,13 @@ function App() {
         {/* <NANDGate/> */}
         {/* <NANDGate2/> */}
         {/* <NORGate /> */}
-        <NORGate2 />
+        {/* <NORGate2 /> */}
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
       {/* <VideoPages/> */}
       {/* <BoxShadow /> */}
-      {/* <DragDrop/> */}
+      <DragDrop/>
     </div>
   );
 }

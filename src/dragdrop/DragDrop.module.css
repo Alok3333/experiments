@@ -1,0 +1,41 @@
+/* AND Gate css code start here */
+
+* {
+    background-color: #021526;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.cardWrapperFirstNANDGate {
+    position: relative;
+    margin: auto;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-color: rgba(246, 247, 248, 0.5);
+    border: 1px solid rgb(232, 234, 238);
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.leftBox,
+.rightBox {
+    width: 250px;
+    height: 300px;
+    background-color: transparent;
+    border: 2px dashed white;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+}
+
+.txt1,
+.txt2 {
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+    cursor: grab;
+}
