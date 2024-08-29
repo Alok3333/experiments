@@ -69,25 +69,23 @@ function NORGate() {
   };
 
   const handleButtonClick = (setter, value) => {
-    // console.log(setter(!value), "setter")
-    setter(!value);
-    if (shiftBattery) {
-      if ((!btnClick1 && !btnClick2) || (!btnClick1 && btnClick3)) {
-        enqueueSnackbar(
-          "Please trun off switch. you should First turn on switch 1",
-          {
-            autoHideDuration: 2000,
-            variant: "error",
-            anchorOrigin: {
-              vertical: "bottom",
-              horizontal: "center",
-            },
-            preventDuplicate: true,
-          }
-        );
-      }
-    } else {
-      enqueueSnackbar("Connect the battery", {
+    // Prevent further action if shiftBattery is off
+    if (!shiftBattery) {
+      enqueueSnackbar("Connect the battery first", {
+        autoHideDuration: 2000,
+        variant: "warning",
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+        preventDuplicate: true,
+      });
+      return;
+    }
+
+    // Check if btnClick1 is off and btnClick2 or btnClick3 are being clicked
+    if (!btnClick1 && (setter === setBtnClick2 || setter === setBtnClick3)) {
+      enqueueSnackbar("First turn on switch 1", {
         autoHideDuration: 2000,
         variant: "error",
         anchorOrigin: {
@@ -96,11 +94,35 @@ function NORGate() {
         },
         preventDuplicate: true,
       });
+      return;
     }
+
+    // Proceed with updating the state if all conditions are satisfied
+    setter(!value);
   };
 
   const handleBatteryClick = () => {
+    const message = !shiftBattery
+      ? "Wonderful, Battery connected!"
+      : "Oops, Battery disconnected!";
+
+    // Use SpeechSynthesis to speak the message
+    const utterance = new SpeechSynthesisUtterance(message);
+    speechSynthesis.speak(utterance);
+
+    // Update battery state
     setShiftBattery(!shiftBattery);
+
+    // Show snackbar with the same message
+    enqueueSnackbar(message, {
+      autoHideDuration: 2000,
+      variant: !shiftBattery ? "success" : "error",
+      anchorOrigin: {
+        vertical: "bottom",
+        horizontal: "center",
+      },
+      preventDuplicate: true,
+    });
   };
 
   return (
