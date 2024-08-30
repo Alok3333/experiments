@@ -96,6 +96,36 @@
     transition: 0.5s ease;
 }
 
+.powerbtnred {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff0000;
+    position: absolute;
+    z-index: 2;
+    top: 69px;
+    left: 45px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.powerbtngreen {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #49FF0A;
+    position: absolute;
+    z-index: 2;
+    top: 69px;
+    left: 45px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
 .btnOffXORgate2 {
     width: 50px;
     height: 46px;
@@ -132,14 +162,18 @@
 /* Add transition for button styles */
 .btnOffXORgate1,
 .btnOffXORgate2,
-.btnOffXORgate3 {
+.btnOffXORgate3,
+.powerbtnred,
+.powerbtngreen {
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
 .btnOffXORgate1:hover,
 .btnOffXORgate2:hover,
-.btnOffXORgate3:hover {
+.btnOffXORgate3:hover,
+.powerbtnred:hover,
+.powerbtngreen:hover {
     background-color: #f0f0f0;
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

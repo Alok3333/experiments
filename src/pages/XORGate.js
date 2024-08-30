@@ -2,17 +2,28 @@ import React, { useState } from "react";
 import styles from "../virtuallabcss/XORGate.module.css";
 import { Box, Grid } from "@mui/material";
 import { useSnackbar } from "notistack";
-import img1 from "../assets/xor-gate1.png";
-import img2 from "../assets/xor-gate2.png";
-import img3 from "../assets/xor-gate3.png";
-import img4 from "../assets/xor-gate4.png";
-import img5 from "../assets/xor-gate5.png";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 
 const btnRed =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4024-switchOff.png";
 
 const btnGreen =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4112-switchOn.png";
+
+const img1 =
+  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-30-4954-xor-gate1.png";
+
+const img2 =
+  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-30-5019-xor-gate2.png";
+
+const img3 =
+  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-30-5044-xor-gate3.png";
+
+const img4 =
+  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-30-519-xor-gate4.png";
+
+const img5 =
+  "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-30-5135-xor-gate5.png";
 
 const lightoff =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-3936-bulboff.png";
@@ -46,7 +57,7 @@ function XORGate() {
     return lightoff;
   };
 
-  const handleButtonClick = (setter, currentValue, buttonName) => {
+  const handleButtonClick = (setter, currentValue) => {
     if (!btnClick1) {
       enqueueSnackbar("Turn on the power first", {
         autoHideDuration: 2000,
@@ -65,8 +76,10 @@ function XORGate() {
 
   const handleBtn1Click = () => {
     const message = btnClick1 ? "Power off!" : "Power on!";
+
     const utterance = new SpeechSynthesisUtterance(message);
     speechSynthesis.speak(utterance);
+
     setBtnClick1(!btnClick1);
 
     enqueueSnackbar(message, {
@@ -183,12 +196,9 @@ function XORGate() {
             />
 
             {/* Button images */}
-            <img
-              src={btnClick1 ? btnGreen : btnRed}
-              className={styles.btnOffXORgate1}
-              alt="button1"
-              onClick={handleBtn1Click}
-            />
+            <Box className={btnClick1 ? styles.powerbtngreen : styles.powerbtnred} onClick={handleBtn1Click}>
+              <PowerSettingsNewIcon />
+            </Box>
 
             <img
               src={btnClick2 ? btnGreen : btnRed}
