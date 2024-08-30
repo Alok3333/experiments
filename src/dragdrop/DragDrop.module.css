@@ -1,10 +1,10 @@
 /* AND Gate css code start here */
 
-* {
+/* * {
     background-color: #021526;
     box-sizing: border-box;
     color: #fff;
-}
+} */
 
 .cardWrapperFirstNANDGate {
     position: relative;
@@ -38,4 +38,13 @@
     background-color: #fff;
     color: #000;
     cursor: grab;
+    margin-bottom: 20px;
+}
+
+.dropArea {
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+    cursor: grab;
+    margin-bottom: 20px;
 }
