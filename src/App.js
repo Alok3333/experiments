@@ -29,6 +29,7 @@ import NORGate from "./pages/NORGate";
 import NORGate2 from "./pages/NORGate2";
 import XORGate from "./pages/XORGate";
 import XORGate2 from "./pages/XORGate2";
+import XNORGate from "./pages/XNORGate";
 
 function App() {
   return (
@@ -58,8 +59,9 @@ function App() {
         {/* <NANDGate2/> */}
         {/* <NORGate /> */}
         {/* <NORGate2 /> */}
-        <XORGate/>
-        <XORGate2/>
+        {/* <XORGate/> */}
+        {/* <XORGate2/> */}
+        <XNORGate />
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
