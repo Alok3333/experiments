@@ -23,7 +23,7 @@ import ORGate2 from "./pages/ORGate2";
 import NOTGate from "./pages/NOTGate";
 import NOTGate2 from "./pages/NOTGate2";
 import NANDGate from "./pages/NANDGate";
-import DragDrop from "./dragdrop/DragDrop";
+import DragablePin from "./dragdrop/DragablePin";
 import NANDGate2 from "./pages/NANDGate2";
 import NORGate from "./pages/NORGate";
 import NORGate2 from "./pages/NORGate2";
@@ -31,6 +31,7 @@ import XORGate from "./pages/XORGate";
 import XORGate2 from "./pages/XORGate2";
 import XNORGate from "./pages/XNORGate";
 import XNORGate2 from "./pages/XNORGate2";
+import ParallelRegister from "./pages/ParallelRegister";
 
 function App() {
   return (
@@ -63,13 +64,14 @@ function App() {
         {/* <XORGate/> */}
         {/* <XORGate2/> */}
         {/* <XNORGate /> */}
-        <XNORGate2/>
+        {/* <XNORGate2/> */}
+        <ParallelRegister/>
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
       {/* <VideoPages/> */}
       {/* <BoxShadow /> */}
-      {/* <DragDrop/> */}
+      {/* <DragablePin/> */}
     </div>
   );
 }
