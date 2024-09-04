@@ -32,6 +32,7 @@ import XORGate2 from "./pages/XORGate2";
 import XNORGate from "./pages/XNORGate";
 import XNORGate2 from "./pages/XNORGate2";
 import ParallelRegister from "./pages/ParallelRegister";
+import BitSerial from "./pages/BitSerial";
 
 function App() {
   return (
@@ -65,7 +66,8 @@ function App() {
         {/* <XORGate2/> */}
         {/* <XNORGate /> */}
         {/* <XNORGate2/> */}
-        <ParallelRegister/>
+        {/* <ParallelRegister/> */}
+        <BitSerial/>
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}

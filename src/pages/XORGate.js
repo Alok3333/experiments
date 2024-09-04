@@ -196,7 +196,10 @@ function XORGate() {
             />
 
             {/* Button images */}
-            <Box className={btnClick1 ? styles.powerbtngreen : styles.powerbtnred} onClick={handleBtn1Click}>
+            <Box
+              className={btnClick1 ? styles.powerbtngreen : styles.powerbtnred}
+              onClick={handleBtn1Click}
+            >
               <PowerSettingsNewIcon />
             </Box>
 
