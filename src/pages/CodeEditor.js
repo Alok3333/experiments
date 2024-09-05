@@ -3,12 +3,35 @@ import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { Editor } from "@monaco-editor/react";
 import Output from "./Output";
+import { useSnackbar } from "notistack";
+import axios from "axios";
+
+// creating a api
+export const API = axios.create({
+  baseURL: "https://emkc.org/api/v2/piston/",
+});
+
+// api with post call
+export const executeCode = async (language, srcCode) => {
+  const res = await API.post("/execute", {
+    language: language,
+    version: LANGUAGE_VERSIONS[language],
+    files: [
+      {
+        content: srcCode,
+      },
+    ],
+  });
+  return res.data;
+};
 
 const LANGUAGE_VERSIONS = {
   javascript: "18.15.0",
-  typeScript: "5.0.3",
+  typescript: "5.0.3",
   python: "3.10.0",
   java: "15.0.2",
+  csharp: "6.12.0",
+  php: "8.2.3",
 };
 
 const CODE_SNIPPETS = {
@@ -82,6 +105,13 @@ const CodeEditor = () => {
   const [value, setValue] = useState(CODE_SNIPPETS["javascript"]); // Set initial code
   const [language, setLanguage] = useState("javascript");
 
+  //  declared output code state
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [output, setOutput] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const handleEditorMount = (editor) => {
     editorRef.current = editor;
     editor.focus();
@@ -90,6 +120,34 @@ const CodeEditor = () => {
   const handleLanguageSelect = (lang) => {
     setLanguage(lang);
     setValue(CODE_SNIPPETS[lang] || "");
+  };
+
+  // RunCodeOutput
+  const runCodeOutput = async () => {
+    const srcCode = editorRef.current.getValue();
+    console.log(srcCode, "Source code here");
+
+    if (!srcCode) return;
+    try {
+      setIsLoading(true);
+      const { run: result } = await executeCode(language, srcCode);
+      const finalResult = result.output.split("\n");
+      setOutput(finalResult);
+      result.stderr ? setIsError(true) : setIsError(false);
+    } catch (err) {
+      console.log(err);
+      enqueueSnackbar(err.message || "Unable to run code", {
+        variant: "error",
+        autoHideDuration: 6000,
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+        preventDuplicate: true,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -112,7 +170,46 @@ const CodeEditor = () => {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Output editorRef={editorRef} language={language} />
+          {/* <Output editorRef={editorRef} language={language} /> */}
+          {/* output code */}
+          <Box
+            sx={{
+              margin: "10px",
+              padding: "10px",
+            }}
+          >
+            <Typography sx={{ mb: 2, fontSize: "18px", color: "grey.500" }}>
+              Output
+            </Typography>
+            <Button
+              variant="outlined"
+              color="success"
+              sx={{ mb: 4 }}
+              onClick={runCodeOutput}
+            >
+              {isLoading ? "loading..." : "Run Code"}
+            </Button>
+            <Box
+              sx={{
+                height: "75vh",
+                p: 2,
+                border: "1px solid",
+                borderRadius: "4px",
+                //   borderColor: "#333",
+                borderColor: `${isError ? "#f44336" : "grey.500"}`,
+                color: `${isError ? "#ef5350" : ""}`,
+                boxShadow: 0,
+              }}
+            >
+              {output ? (
+                output.map((line, i) => <Typography key={i}>{line}</Typography>)
+              ) : (
+                <Typography sx={{ color: "grey.600" }}>
+                  Click "Run Code" to see the output here.
+                </Typography>
+              )}
+            </Box>
+          </Box>
         </Grid>
       </Grid>
     </Box>

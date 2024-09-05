@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSnackbar } from "notistack";
 
-
 export const LANGUAGE_VERSIONS = {
   javascript: "18.15.0",
   typeScript: "5.0.3",
@@ -76,7 +75,6 @@ function Output({ editorRef, language }) {
   return (
     <Box
       sx={{
-        width: "50%",
         margin: "10px",
         padding: "10px",
       }}
@@ -88,10 +86,9 @@ function Output({ editorRef, language }) {
         variant="outlined"
         color="success"
         sx={{ mb: 4 }}
-        isLoading={isLoading}
         onClick={runCodeOutput}
       >
-        Run Code
+        {isLoading ? "loading..." : "Run Code"}
       </Button>
       <Box
         sx={{
