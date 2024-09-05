@@ -36,6 +36,7 @@ import BitSerial from "./pages/BitSerial";
 import CompilerCodeEditor from "./pages/CompilerCodeEditor";
 import Output from "./pages/Output";
 import CodeEditor from "./pages/CodeEditor";
+import ThemeApp from "./pages/theme";
 
 function App() {
   return (
@@ -73,6 +74,7 @@ function App() {
         {/* <BitSerial/> */}
         {/* <CompilerCodeEditor /> */}
         <CodeEditor/>
+        {/* <ThemeApp/> */}
         {/* <Output/> */}
       </SnackbarProvider>
       {/* <VideoPage /> */}

@@ -35,7 +35,7 @@ const LANGUAGE_VERSIONS = {
 };
 
 const CODE_SNIPPETS = {
-  javascript: `\nfunction greet(name) {\n\tconsole.log("Hello, " + name + "!");\n}\n\ngreet("Alex");\n`,
+  javascript: `\nfunction greet(name) {\n\tconsole.log("Hello, " + name + "!");\n}\n\ngreet("Alok");\n`,
   typescript: `\ntype Params = {\n\tname: string;\n}\n\nfunction greet(data: Params) {\n\tconsole.log("Hello, " + data.name + "!");\n}\n\ngreet({ name: "Alex" });\n`,
   python: `\ndef greet(name):\n\tprint("Hello, " + name + "!")\n\ngreet("Alex")\n`,
   java: `\npublic class HelloWorld {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}\n`,
@@ -58,10 +58,10 @@ const LanguageSelector = ({ language, onSelect }) => {
 
   return (
     <Box sx={{ marginLeft: 2, marginBottom: 4 }}>
-      <Typography mb={2} variant="h6">
+      <Typography sx={{ mb: 2, fontSize: "18px", color: "grey.500" }}>
         Choose Language
       </Typography>
-      <Button onClick={handleClick} variant="contained">
+      <Button onClick={handleClick} variant="outlined">
         {language}
       </Button>
       <Menu
@@ -151,33 +151,35 @@ const CodeEditor = () => {
   };
 
   return (
-    <Box sx={{ padding: 2 }}>
+    <Box sx={{ padding: 2, margin: "10px", padding: "10px" }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
           <LanguageSelector
             language={language}
             onSelect={handleLanguageSelect}
           />
-          <Editor
-            options={{
-              minimap: { enabled: false },
-            }}
-            height="75vh"
-            language={language}
-            value={value}
-            onMount={handleEditorMount}
-            onChange={(newValue) => setValue(newValue || "")}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          {/* <Output editorRef={editorRef} language={language} /> */}
-          {/* output code */}
           <Box
             sx={{
-              margin: "10px",
-              padding: "10px",
+              border: "1px solid",
+              borderColor: "grey.500",
+              borderRadius: "4px",
             }}
           >
+            <Editor
+              options={{
+                minimap: { enabled: false },
+              }}
+              height="79vh"
+              language={language}
+              value={value}
+              onMount={handleEditorMount}
+              onChange={(newValue) => setValue(newValue || "")}
+            />
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          {/* output code */}
+          <Box>
             <Typography sx={{ mb: 2, fontSize: "18px", color: "grey.500" }}>
               Output
             </Typography>
@@ -199,6 +201,7 @@ const CodeEditor = () => {
                 borderColor: `${isError ? "#f44336" : "grey.500"}`,
                 color: `${isError ? "#ef5350" : ""}`,
                 boxShadow: 0,
+                backgroundColor: "#fff",
               }}
             >
               {output ? (
