@@ -1,7 +1,8 @@
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
-import { enqueueSnackbar, useSnackbar } from "notistack";
+import { useSnackbar } from "notistack";
+
 
 export const LANGUAGE_VERSIONS = {
   javascript: "18.15.0",
@@ -22,7 +23,7 @@ export const CODE_SNIPPETS = {
 
 // creating a api
 export const API = axios.create({
-  baseURL: "https://emkc.org/api/v2/piston",
+  baseURL: "https://emkc.org/api/v2/piston/",
 });
 
 // api with post call
@@ -36,7 +37,6 @@ export const executeCode = async (language, srcCode) => {
       },
     ],
   });
-  console.log(res.data, "res data");
   return res.data;
 };
 

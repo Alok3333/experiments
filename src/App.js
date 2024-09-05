@@ -35,6 +35,7 @@ import ParallelRegister from "./pages/ParallelRegister";
 import BitSerial from "./pages/BitSerial";
 import CompilerCodeEditor from "./pages/CompilerCodeEditor";
 import Output from "./pages/Output";
+import CodeEditor from "./pages/CodeEditor";
 
 function App() {
   return (
@@ -71,7 +72,8 @@ function App() {
         {/* <ParallelRegister/> */}
         {/* <BitSerial/> */}
         {/* <CompilerCodeEditor /> */}
-        <Output/>
+        <CodeEditor/>
+        {/* <Output/> */}
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
