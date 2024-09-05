@@ -33,6 +33,8 @@ import XNORGate from "./pages/XNORGate";
 import XNORGate2 from "./pages/XNORGate2";
 import ParallelRegister from "./pages/ParallelRegister";
 import BitSerial from "./pages/BitSerial";
+import CompilerCodeEditor from "./pages/CompilerCodeEditor";
+import Output from "./pages/Output";
 
 function App() {
   return (
@@ -67,7 +69,9 @@ function App() {
         {/* <XNORGate /> */}
         {/* <XNORGate2/> */}
         {/* <ParallelRegister/> */}
-        <BitSerial/>
+        {/* <BitSerial/> */}
+        {/* <CompilerCodeEditor /> */}
+        <Output/>
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
