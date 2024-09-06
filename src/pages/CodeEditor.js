@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness6Icon from "@mui/icons-material/Brightness6";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { Editor } from "@monaco-editor/react";
 import Output from "./Output";
 import { useSnackbar } from "notistack";
@@ -175,12 +175,12 @@ const CodeEditor = () => {
         }}
       >
         {isDark ? (
-          <Brightness4Icon
+          <DarkModeIcon
             sx={{ color: `${isDark ? "#dcdcdc" : "#000"}` }}
             onClick={() => setIsDark(!isDark)}
           />
         ) : (
-          <Brightness6Icon
+          <LightModeIcon
             sx={{ color: `${isDark ? "#dcdcdc" : "#000"}` }}
             onClick={() => setIsDark(!isDark)}
           />
