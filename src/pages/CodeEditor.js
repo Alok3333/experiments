@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness6Icon from "@mui/icons-material/Brightness6";
 import { Editor } from "@monaco-editor/react";
 import Output from "./Output";
 import { useSnackbar } from "notistack";
@@ -44,7 +46,7 @@ const CODE_SNIPPETS = {
   php: "<?php\n\n$name = 'Alok';\necho $name;\n",
 };
 
-const LanguageSelector = ({ language, onSelect }) => {
+const LanguageSelector = ({ language, onSelect, isDark }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -61,7 +63,7 @@ const LanguageSelector = ({ language, onSelect }) => {
       <Typography sx={{ mb: 2, fontSize: "18px", color: "grey.500" }}>
         Choose Language
       </Typography>
-      <Button onClick={handleClick} variant="outlined">
+      <Button onClick={handleClick} variant={isDark ? "contained" : "outlined"}>
         {language}
       </Button>
       <Menu
@@ -105,12 +107,15 @@ const CodeEditor = () => {
   const [value, setValue] = useState(CODE_SNIPPETS["javascript"]); // Set initial code
   const [language, setLanguage] = useState("javascript");
 
-  //  declared output code state
+  // Declared output code state
   const { enqueueSnackbar } = useSnackbar();
 
   const [output, setOutput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  // Declared State for dark/light
+  const [isDark, setIsDark] = useState(false);
 
   const handleEditorMount = (editor) => {
     editorRef.current = editor;
@@ -125,7 +130,7 @@ const CodeEditor = () => {
   // RunCodeOutput
   const runCodeOutput = async () => {
     const srcCode = editorRef.current.getValue();
-    console.log(srcCode, "Source code here");
+    // console.log(srcCode, "Source code here");
 
     if (!srcCode) return;
     try {
@@ -151,12 +156,43 @@ const CodeEditor = () => {
   };
 
   return (
-    <Box sx={{ padding: 2, margin: "10px", padding: "10px" }}>
+    <Box
+      sx={{
+        // padding: 2,
+        // margin: "10px",
+        padding: "10px",
+        height: "100vh",
+        backgroundColor: `${isDark ? "#000" : ""}`,
+      }}
+    >
+      {/* toogle button for dark and light screen */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "end",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+      >
+        {isDark ? (
+          <Brightness4Icon
+            sx={{ color: `${isDark ? "#dcdcdc" : "#000"}` }}
+            onClick={() => setIsDark(!isDark)}
+          />
+        ) : (
+          <Brightness6Icon
+            sx={{ color: `${isDark ? "#dcdcdc" : "#000"}` }}
+            onClick={() => setIsDark(!isDark)}
+          />
+        )}
+      </Box>
+
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
           <LanguageSelector
             language={language}
             onSelect={handleLanguageSelect}
+            isDark={isDark}
           />
           <Box
             sx={{
@@ -174,19 +210,22 @@ const CodeEditor = () => {
               value={value}
               onMount={handleEditorMount}
               onChange={(newValue) => setValue(newValue || "")}
+              theme={!isDark ? "light" : "vs-dark"}
             />
           </Box>
         </Grid>
         <Grid item xs={12} md={6}>
           {/* output code */}
           <Box>
-            <Typography sx={{ mb: 2, fontSize: "18px", color: "grey.500" }}>
+            <Typography
+              sx={{ mb: 2, marginLeft: 2, fontSize: "18px", color: "grey.500" }}
+            >
               Output
             </Typography>
             <Button
-              variant="outlined"
+              variant={isDark ? "contained" : "outlined"}
               color="success"
-              sx={{ mb: 4 }}
+              sx={{ mb: 4, marginLeft: 2 }}
               onClick={runCodeOutput}
             >
               {isLoading ? "loading..." : "Run Code"}
@@ -199,9 +238,10 @@ const CodeEditor = () => {
                 borderRadius: "4px",
                 //   borderColor: "#333",
                 borderColor: `${isError ? "#f44336" : "grey.500"}`,
-                color: `${isError ? "#ef5350" : ""}`,
+                color: `${isError ? "#ef5350" : "grey.600"}`,
                 boxShadow: 0,
-                backgroundColor: "#fff",
+                backgroundColor: `${isDark ? "#1e1e1e" : "#fff"}`,
+                overflow: "auto",
               }}
             >
               {output ? (
