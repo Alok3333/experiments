@@ -187,7 +187,7 @@ const CodeEditor = () => {
         )}
       </Box>
 
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ marginTop: "0px" }}>
         <Grid item xs={12} md={6}>
           <LanguageSelector
             language={language}
