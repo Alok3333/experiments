@@ -37,6 +37,7 @@ import CompilerCodeEditor from "./pages/CompilerCodeEditor";
 import Output from "./pages/Output";
 import CodeEditor from "./pages/CodeEditor";
 import ThemeApp from "./pages/theme";
+import NavBar from "./pages/NavBar";
 
 function App() {
   // const docker_run = "e1557c8283c1e0adb3bfdcb7eee65dfed6e78190a1a6328ca5f4c0a6a4b39dde";
@@ -75,9 +76,10 @@ function App() {
         {/* <ParallelRegister/> */}
         {/* <BitSerial/> */}
         {/* <CompilerCodeEditor /> */}
-        <CodeEditor/>
+        {/* <CodeEditor/> */}
         {/* <ThemeApp/> */}
         {/* <Output/> */}
+        <NavBar />
       </SnackbarProvider>
       {/* <VideoPage /> */}
       {/* <TextToSpeech/> */}
