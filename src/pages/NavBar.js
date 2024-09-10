@@ -20,6 +20,10 @@ import aboutImg from "../assets/about-img.jpg";
 import { Container } from "@mui/material";
 import styles from "../virtuallabcss/NavBar.module.css";
 
+// you should remove this links after completing website
+const linkoftemplate =
+  "https://www.free-css.com/free-css-templates/page296/spering";
+
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact", "Login"];
 
