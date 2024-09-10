@@ -10,7 +10,8 @@ import axios from "axios";
 
 // creating a api
 export const API = axios.create({
-  baseURL: "https://emkc.org/api/v2/piston/",
+  // baseURL: "https://emkc.org/api/v2/piston/",
+  baseURL: "http://localhost:2000/api/v2/piston",
 });
 
 // api with post call
