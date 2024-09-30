@@ -21,7 +21,7 @@ import img5 from "../assets/img15.png";
 import img6 from "../assets/img16.png";
 
 // Import global1 file here
-// import global1 from "./global1";
+import global1 from "./global1";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -138,8 +138,8 @@ const rows = [
 ];
 
 // Create a username and register no
-const username = "global1.name";
-const registerNo = "global1.regno";
+const username = global1.name;
+const registerNo = global1.regno;
 
 export default function Resistor() {
   const [score, setScore] = useState(0);

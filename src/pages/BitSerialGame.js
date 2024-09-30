@@ -19,7 +19,7 @@ import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import { useSnackbar } from "notistack";
 
 // Import global1 file here
-// import global1 from "./global1";
+import global1 from "./global1";
 
 const btnRed =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-4024-switchOff.png";
@@ -33,8 +33,8 @@ const batteryimg =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/9-2024-3-2616-battery-filp-button-new-Photo.png";
 
 // Global1 username and regno
-const username = "global1.name";
-const registerNo = "global1.regno";
+const username = global1.name;
+const registerNo = global1.regno;
 
 function BitSerial() {
   const { enqueueSnackbar } = useSnackbar();
@@ -273,12 +273,12 @@ function BitSerial() {
                   <h3>
                     <span className={styles.unText}>INSTRUCTIONS</span>
                   </h3>
-                  <ol style={{marginLeft: "20px", marginTop: "10px"}}>
-                    <li>Connect battery to supply 5V to the circuit.</li>
+                  <ol style={{ marginLeft: "20px", marginTop: "10px" }}>
+                    <li>Connect the battery to supply 5V to the circuit.</li>
                     <li>Keep the RESET and PRESET as active high signals.</li>
-                    <li>Apply the data at Data Input.</li>
+                    <li>Apply the data at the Data Input.</li>
                     <li>
-                      Apply one clock pulse at clock 1 and observe this data at
+                      Apply one clock pulse at Clock 1 and observe this data at
                       LED Q.
                     </li>
                     <li>
@@ -292,19 +292,19 @@ function BitSerial() {
                       >
                         Add
                       </span>
-                      " Button to add data to the Truth Table.
+                      " button to add data to the Truth Table.
                     </li>
-                    <li>Apply the next data at Data Input.</li>
+                    <li>Apply the next data at the Data Input.</li>
                     <li>
                       <b>
-                        Apply one clock pulse at clock 2, observe that the data
-                        on Q<sub>3</sub> will shift to Q<sub>2</sub> and the new
-                        data applied will appear at Q<sub>3</sub>.
+                        Apply one clock pulse at Clock 2; observe that the data
+                        on Q<sub>3</sub> will shift to Q<sub>2</sub>, and the
+                        new data applied will appear at Q<sub>3</sub>.
                       </b>
                     </li>
                     <li>
-                      Repeat steps 3 to 5 till all the 4 bits data appear at the
-                      output of shift register.
+                      Repeat steps 3 to 5 until all 4 bits of data appear at the
+                      output of the shift register.
                     </li>
                     <li>
                       Click "
@@ -317,7 +317,7 @@ function BitSerial() {
                       >
                         Print
                       </span>
-                      " to get the print out of the Truth Table.
+                      " to get a printout of the Truth Table.
                     </li>
                   </ol>
                 </Box>

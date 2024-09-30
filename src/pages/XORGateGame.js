@@ -21,7 +21,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 
 // Import global1 file here
-// import global1 from "./global1";
+import global1 from "./global1";
 
 const MAX_VAL = 1;
 const MIN_VAL = 0;
@@ -54,8 +54,8 @@ const lighton =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-4010-bulbon.png";
 
 // Global1 username and regno
-const username = "global1.name";
-const registerNo = "global1.regno";
+const username = global1.name;
+const registerNo = global1.regno;
 
 function XORGate() {
   const [score, setScore] = useState(0);

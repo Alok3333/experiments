@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 
 // Import the global1 file
-// import global1 from "./global1";
+import global1 from "./global1";
 
 const circleOff1 =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-5-355-circleBtnOn.png";
@@ -43,8 +43,8 @@ const rows = [
 ];
 
 // Create a username and register no
-const username = "global1.name";
-const registerNo = "global1.regno";
+const username = global1.name;
+const registerNo = global1.regno;
 
 function SubHalfAdder1() {
   const [score, setScore] = useState(0);
@@ -265,7 +265,7 @@ function SubHalfAdder1() {
                   checked={checkboxChecked}
                   onChange={() => setCheckboxChecked(!checkboxChecked)}
                 />
-                If checked, you performed experiment
+                If checked, you performed the experiment
               </Typography>
             </Box>
 

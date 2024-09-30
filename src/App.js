@@ -1,7 +1,7 @@
 import { SnackbarProvider } from "notistack";
 import "./App.css";
 import CharacterizationOfDigitalLogic from "./CharacterizationOfDigitalLogic/CharacterizationOfDigitalLogic";
-import Resistor from "./ExperimentLabs/ResistorGame";
+import Resistor from "./pages/ResistorGame";
 import FourBitAdderSubtractor from "./FourBitAdderSubtractor/FourBitAdderSubtractor";
 import FullSubtractor from "./FullSubtractor/FullSubtractor";
 import HalfSubtractor from "./HalfSubtractor/HalfSubtractor";
@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div className="App">
-      <Resistor/>
+      {/* <Resistor/> */}
       {/* <SubHalfAdder1/> */}
 
       {/* <SubFullAdder/> */}

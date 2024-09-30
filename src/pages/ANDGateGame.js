@@ -19,7 +19,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 
 // Import global1 file here
-// import global1 from "./global1";
+import global1 from "./global1";
 
 const MAX_VAL = 1;
 const MIN_VAL = 0;
@@ -55,8 +55,8 @@ const lighton =
   "https://jadavpuruniversity.s3-ap-south-1.amazonaws.com/8-2024-22-4010-bulbon.png";
 
 // Global1 username and regno
-const username = "global1.name";
-const registerNo = "global1.regno";
+const username = global1.name;
+const registerNo = global1.regno;
 
 function ANDGate() {
   const [score, setScore] = useState(0);
@@ -305,7 +305,7 @@ function ANDGate() {
               <Box className={styles.cardWrapperFirstANDGate}>
                 <Box className={styles.instrauctionwrapper}>
                   <h3>INSTRUCTIONS</h3>
-                  <ol>
+                  <ol style={{marginLeft: "20px", marginTop: "10px", marginBottom: "10px"}}>
                     <li>Connect the battery first.</li>
                     <li>
                       Press the switch 1 for the battery to be connected to the
@@ -320,7 +320,7 @@ function ANDGate() {
                     </li>
                   </ol>
                   <h3>SPECIFICATIONS</h3>
-                  <ol>
+                  <ol style={{marginLeft: "20px", marginTop: "10px"}}>
                     <li>Battery = 5V</li>
                     <li>Resistance R1 & R2 = 5 kohm, R3 & R4= 10 Kohm</li>
                     <li>Transistors Q1 & Q2 = NPN 2N3904</li>
