@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../virtuallabcss/XORGate.module.css";
+import styles from "../virtuallabcss/XORGateGame.module.css";
 import {
   Box,
   Button,

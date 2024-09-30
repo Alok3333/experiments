@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../virtuallabcss/ORGate.module.css";
+import styles from "../virtuallabcss/ORGateGame.module.css";
 import {
   Box,
   Button,

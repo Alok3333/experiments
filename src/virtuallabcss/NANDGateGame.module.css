@@ -1,6 +1,6 @@
 /* AND Gate css code start here */
 
-.cardWrapperBitSerial {
+.cardWrapperFirstNANDGate {
     position: relative;
     margin: auto;
     display: flex;
@@ -14,19 +14,11 @@
     overflow: hidden;
 }
 
-.backgroundImageBitSerialBattery {
-    position: absolute;
-    z-index: 2;
-    top: 86px;
-    left: 8px;
-    transition: transform 0.5s ease;
-    cursor: pointer;
-}
-
 /* underline text animation css */
 .unText {
     display: inline-block;
     position: relative;
+    margin-top: 15px;
 }
 
 .unText:after {
@@ -49,7 +41,7 @@
     left: auto;
 }
 
-.titleBitSerial {
+.titleNandGate {
     position: absolute;
     z-index: 2;
     background-color: #D6E6F2;
@@ -60,8 +52,8 @@
     align-items: center;
 }
 
-.titleBitSerial::before {
-    content: '4-Bit serial';
+.titleNandGate::before {
+    content: 'NAND GATE';
     background-color: #e4d049;
     color: #000;
     font-weight: 700;
@@ -72,7 +64,7 @@
     width: 97px;
 }
 
-.backgroundImageBitSerial {
+.backgroundImageNANDGate {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -80,7 +72,7 @@
 }
 
 .instrauctionwrapper {
-    max-width: 828px;
+    width: 82%;
     font-family: monospace;
     transition: padding 0.3s ease, transform 0.3s ease, margin 0.3s ease, box-shadow 0.3s ease;
 }
@@ -92,130 +84,72 @@
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 
-.btnOffBitSerial1 {
+.btnOffNANDgate1 {
     width: 50px;
     height: 46px;
     position: absolute;
     z-index: 2;
     margin: 0;
     padding: 0;
-    left: 10.8%;
-    top: 32%;
+    right: 32.5%;
+    top: 9%;
     cursor: pointer;
     transition: 0.5s ease;
 }
 
-.powerbtnred {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ff0000;
+.btnOffNANDgate2 {
+    width: 50px;
+    height: 46px;
     position: absolute;
     z-index: 2;
-    top: 403px;
-    left: 96px;
-    border-radius: 50%;
-    border: 1px solid #000;
+    margin: 0;
+    padding: 0;
+    left: 17%;
+    top: 45.4%;
+    cursor: pointer;
 }
 
-.powerbtngreen {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #49FF0A;
+.btnOffNANDgate3 {
+    width: 50px;
+    height: 46px;
     position: absolute;
     z-index: 2;
-    top: 403px;
-    left: 96px;
-    border-radius: 50%;
-    border: 1px solid #000;
+    margin: 0;
+    padding: 0;
+    left: 17%;
+    top: 68.7%;
+    cursor: pointer;
 }
 
-.powerbtnred1 {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ff0000;
+.backgroundImageNANDGateBattery {
     position: absolute;
     z-index: 2;
-    top: 448px;
-    left: 96px;
-    border-radius: 50%;
-    border: 1px solid #000;
+    top: 150px;
+    right: 7px;
+    transition: transform 0.5s ease;
+    cursor: pointer;
 }
 
-.powerbtngreen1 {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #49FF0A;
+.backgroundImageNANDGateLight {
+    width: 66px;
+    height: 90px;
     position: absolute;
     z-index: 2;
-    top: 448px;
-    left: 96px;
-    border-radius: 50%;
-    border: 1px solid #000;
-}
-
-.backgroundImageBitSerialLight {
-    width: 90px;
-    height: 110px;
-    position: absolute;
-    z-index: 2;
-    bottom: 509px;
-    right: 107px;
-}
-
-.backgroundImageBitSerialLight2 {
-    width: 90px;
-    height: 110px;
-    position: absolute;
-    z-index: 2;
-    bottom: 509px;
-    right: 258px;
-}
-
-.backgroundImageBitSerialLight3 {
-    width: 90px;
-    height: 110px;
-    position: absolute;
-    z-index: 2;
-    bottom: 509px;
-    right: 477px;
-}
-
-.backgroundImageBitSerialLight4 {
-    width: 90px;
-    height: 110px;
-    position: absolute;
-    z-index: 2;
-    bottom: 509px;
-    right: 566px;
+    bottom: 204px;
+    right: 421px;
 }
 
 /* Add transition for button styles */
-.btnOffBitSerial1,
-.powerbtnred,
-.powerbtngreen,
-.powerbtnred1,
-.powerbtngreen1 {
+.btnOffNANDgate1,
+.btnOffNANDgate2,
+.btnOffNANDgate3 {
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
-.btnOffBitSerial1:hover,
-.powerbtnred:hover,
-.powerbtngreen:hover,
-.powerbtnred1:hover,
-.powerbtngreen1:hover {
+.btnOffNANDgate1:hover,
+.btnOffNANDgate2:hover,
+.btnOffNANDgate3:hover {
     background-color: #f0f0f0;
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -223,11 +157,11 @@
 
 /* ************ NANDGate2 css start from here ************ */
 
-.tablewrappernorgate {
+.tablewrapper {
     position: absolute;
     z-index: 2;
     width: 65%;
-    height: 35%;
-    bottom: 32px;
+    height: 56%;
+    bottom: 0;
     overflow: auto;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../virtuallabcss/NANDGate.module.css";
+import styles from "../virtuallabcss/NANDGateGame.module.css";
 import {
   Box,
   Button,

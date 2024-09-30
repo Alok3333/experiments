@@ -38,6 +38,7 @@
 .unText {
     display: inline-block;
     position: relative;
+    margin-top: 15px;
 }
 
 .unText:after {
@@ -95,7 +96,7 @@
 .backgroundImageNOTGateBattery {
     position: absolute;
     z-index: 2;
-    top: 254px;
+    top: 229px;
     right: 16px;
     transition: transform 0.5s ease;
     cursor: pointer;

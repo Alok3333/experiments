@@ -1,28 +1,27 @@
-.App {
+/* .App {
   font-family: Arial, sans-serif;
-  /* text-align: center; */
-  /* margin-top: 20px;
-  margin-bottom: 20px; */
-  /* background: #f0f4f9; */
-  /* display: flex;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: #f0f4f9;
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; */
-}
+  height: 100vh;
+} */
 
-label {
+/* label {
   margin-right: 10px;
 }
 
 select {
   margin-bottom: 10px;
-}
+} */
 
 /* .csstop {
   position: relative;
   margin: auto;
   display: flex;
-  width: 31%;
   -webkit-box-pack: center;
   justify-content: center;
   padding: 24px;
